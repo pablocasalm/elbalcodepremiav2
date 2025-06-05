@@ -2,10 +2,10 @@ import React from 'react';
 import { useInView } from '../hooks/useInView';
 
 const imageUrls = [
-  "https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+  "public/imagenes/ElBalcoCTPD_20250601_083.jpg",
   "public/imagenes/Imagen-planta-sala.jpeg",
   "public/imagenes/Imagen-sala-marco.jpeg",
-  "https://images.pexels.com/photos/1395967/pexels-photo-1395967.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  "public/imagenes/ElBalcoCTPD_20250601_085.jpg"
 ];
 
 const About: React.FC = () => {

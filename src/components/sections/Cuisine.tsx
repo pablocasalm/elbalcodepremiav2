@@ -4,27 +4,27 @@ import { ChevronRight } from 'lucide-react';
 
 const images = [
   {
-    url: "https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    alt: "Pulpo a la brasa con puré de boniato"
+    url: "imagenes/Platos/ElBalcoCTPD_20250601_051.jpg",
+    alt: "Pulpo a la brasa con puré de boniato"   //TODO CAMBIAR 
   },
   {
-    url: "https://images.pexels.com/photos/1213710/pexels-photo-1213710.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    alt: "Ensalada de temporada con vinagreta cítrica"
+    url: "imagenes/Platos/ElBalcoCTPD_20250601_054_cortada.jpg",
+    alt: "Ensalada de temporada con vinagreta cítrica"    //TODO CAMBIAR 
   },
   {
-    url: "https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    url: "imagenes/Platos/ElBalcoCTPD_20250601_057_cortada.jpg",
     alt: "Hummus casero con pan artesanal"
   },
   {
-    url: "https://images.pexels.com/photos/12865447/pexels-photo-12865447.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    url: "imagenes/Platos/ElBalcoCTPD_20250601_061.jpg",
     alt: "Paella mediterránea con mariscos frescos"
   },
   {
-    url: "https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    url: "imagenes/Platos/ElBalcoCTPD_20250601_063.jpg",
     alt: "Coulant de chocolate con frutos rojos"
   },
   {
-    url: "https://images.pexels.com/photos/1123260/pexels-photo-1123260.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    url: "imagenes/Platos/ElBalcoCTPD_20250601_075_cortada.jpg",
     alt: "Aperitivo con vermut y aceitunas"
   }
 ];

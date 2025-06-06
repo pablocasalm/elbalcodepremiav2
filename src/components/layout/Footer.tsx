@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           <div>
-            <h4 className="text-xl font-serif font-bold mb-4">El Balcó de Premià</h4>
+            <h4 className="text-xl font-serif font-bold mb-4">El Balcó de Premià de Dalt</h4>
             <p className="text-brown-100/80 mb-4">
               Un restaurante mediterráneo moderno que ofrece una experiencia gastronómica completa en el corazón de Premià de Dalt.
             </p>
@@ -42,9 +42,9 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-lg font-medium mb-4">Contacto</h4>
             <ul className="space-y-2">
-              <li className="text-brown-100/80 hover:underline" href="tel:+34 938 53 56 31">+34 938 53 56 31</li>
-              <li className="text-brown-100/80 hover:underline" href="mailto:info@elbalcodepremia.com">info@elbalcopremia.com</li>
-              <li className="text-brown-100/80 hover:underline" href="https://www.google.com/maps/place/Restaurante+EL+BALC%C3%93+DE+PREMI%C3%80+DE+DALT/@41.5045411,2.3456695,17z/data=!4m16!1m9!3m8!1s0x12a4b6d119300005:0x20e7cec66f1c1da!2sRestaurante+EL+BALC%C3%93+DE+PREMI%C3%80+DE+DALT!8m2!3d41.5045411!4d2.3482444!9m1!1b1!16s%2Fg%2F11c6cr5lp3!3m5!1s0x12a4b6d119300005:0x20e7cec66f1c1da!8m2!3d41.5045411!4d2.3482444!16s%2Fg%2F11c6cr5lp3?entry=ttu&g_ep=EgoyMDI1MDUwNy4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D">Torrent Mateu Mas, 31, 08338 Premià de Dalt, Barcelona, España</li>
+              <li><a className="text-brown-100/80 hover:underline" href="tel:+34 938 53 56 31">+34 938 53 56 31</a></li>
+              <li><a className="text-brown-100/80 hover:underline" href="mailto:info@elbalcodepremia.com">info@elbalcopremia.com</a></li>
+              <li><a className="text-brown-100/80 hover:underline" href="https://www.google.com/maps/place/Restaurante+EL+BALC%C3%93+DE+PREMI%C3%80+DE+DALT/@41.5045411,2.3456695,17z/data=!4m16!1m9!3m8!1s0x12a4b6d119300005:0x20e7cec66f1c1da!2sRestaurante+EL+BALC%C3%93+DE+PREMI%C3%80+DE+DALT!8m2!3d41.5045411!4d2.3482444!9m1!1b1!16s%2Fg%2F11c6cr5lp3!3m5!1s0x12a4b6d119300005:0x20e7cec66f1c1da!8m2!3d41.5045411!4d2.3482444!16s%2Fg%2F11c6cr5lp3?entry=ttu&g_ep=EgoyMDI1MDUwNy4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D">Torrent Mateu Mas, 31, 08338 Premià de Dalt, Barcelona, España</a></li>
             </ul>
           </div>
           

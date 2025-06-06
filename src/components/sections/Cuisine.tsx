@@ -5,27 +5,27 @@ import { ChevronRight } from 'lucide-react';
 const images = [
   {
     url: "imagenes/Platos/ElBalcoCTPD_20250601_051.jpg",
-    alt: "Pulpo a la brasa con puré de boniato"   //TODO CAMBIAR 
+    alt: "Bacalao a la muselina con manzana en cama de cebolla caramelizada y cherrys asados"   //TODO CAMBIAR 
   },
   {
     url: "imagenes/Platos/ElBalcoCTPD_20250601_054_cortada.jpg",
-    alt: "Ensalada de temporada con vinagreta cítrica"    //TODO CAMBIAR 
+    alt: "Entrecot de ternera a la brasa con fritas de boniato y pimientos del padrón"    //TODO CAMBIAR 
   },
   {
     url: "imagenes/Platos/ElBalcoCTPD_20250601_057_cortada.jpg",
-    alt: "Hummus casero con pan artesanal"
+    alt: "arróz seco de chistorra con huevos fritos"
   },
   {
     url: "imagenes/Platos/ElBalcoCTPD_20250601_061.jpg",
-    alt: "Paella mediterránea con mariscos frescos"
+    alt: "Bollicao de gambita roja y calamares con guacamole, cebolla roja adobada y mayonesa de kimchi"
   },
   {
     url: "imagenes/Platos/ElBalcoCTPD_20250601_063.jpg",
-    alt: "Coulant de chocolate con frutos rojos"
+    alt: "Carpaccio de calabacín con vinagreta de verduras y virutas de foie micuit"
   },
   {
     url: "imagenes/Platos/ElBalcoCTPD_20250601_075_cortada.jpg",
-    alt: "Aperitivo con vermut y aceitunas"
+    alt: "Bocadillo de lomo y queso con nuestras patatas bravas"
   }
 ];
 
@@ -48,7 +48,7 @@ const Cuisine: React.FC = () => {
             </h2>
             <div className="space-y-4 text-neutral-600 leading-relaxed">
               <p>
-                En <em>El Balcó de Premià</em>, cada plato cuenta una historia. Inspirados en la riqueza de la cocina mediterránea tradicional e impulsados por una visión creativa y actual, nuestra propuesta culinaria celebra el equilibrio, el color y la autenticidad.
+                En <em>El Balcó de Premià de Dalt</em>, cada plato cuenta una historia. Inspirados en la riqueza de la cocina mediterránea tradicional e impulsados por una visión creativa y actual, nuestra propuesta culinaria celebra el equilibrio, el color y la autenticidad.
               </p>
               <p>
                 Con ingredientes frescos, de temporada y combinaciones sorprendentes, nuestro equipo de cocina crea platos que alimentan el cuerpo y despiertan los sentidos.

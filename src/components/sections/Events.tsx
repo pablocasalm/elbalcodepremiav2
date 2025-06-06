@@ -46,7 +46,7 @@ const Events: React.FC = () => {
             Eventos y Celebraciones
           </h2>
           <p className="text-neutral-600 leading-relaxed">
-            El Balcó de Premià es el lugar perfecto para tus ocasiones especiales, eventos corporativos o simplemente para disfrutar de nuestras noches temáticas y actuaciones en directo.
+            El Balcó de Premià de Dalt es el lugar perfecto para tus ocasiones especiales, eventos corporativos o simplemente para disfrutar de nuestras noches temáticas y actuaciones en directo.
           </p>
         </div>
 

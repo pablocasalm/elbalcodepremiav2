@@ -21,6 +21,13 @@ const Header: React.FC = () => {
     };
   }, []);
 
+  const handleScrollToContact = () => {
+    const contactElm = document.getElementById('contact');
+    if (contactElm) {
+      contactElm.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -62,7 +69,7 @@ const Header: React.FC = () => {
             isScrolled ? 'text-brown-700' : 'text-white'
           }`}
         >
-          El Balcó de Premià
+          El Balcó de Premià de Dalt
         </span>
             </a>
           </div>
@@ -83,6 +90,7 @@ const Header: React.FC = () => {
                   ? 'bg-brown-700 hover:bg-brown-800 text-white' 
                   : 'bg-white hover:bg-opacity-90 text-brown-700'
               } font-medium`}
+              onClick={handleScrollToContact}
             >
               Reservar
             </button>
@@ -114,7 +122,7 @@ const Header: React.FC = () => {
           
           <button 
             className="px-6 py-2 rounded-full bg-brown-700 hover:bg-brown-800 text-white font-medium mt-4"
-            onClick={toggleMenu}
+            onClick={handleScrollToContact}
           >
             Reservar
           </button>

@@ -33,7 +33,7 @@ const Contact: React.FC = () => {
             Contacto y Reservas
           </h2>
           <p className="text-brown-100/80 leading-relaxed">
-            Estamos deseando darte la bienvenida a El Balcó de Premià. Haz tu reserva, consulta sobre eventos o ven a disfrutar de una experiencia mediterránea auténtica, rodeado de buena gastronomía y mejor ambiente.
+            Estamos deseando darte la bienvenida a El Balcó de Premià de Dalt. Haz tu reserva, consulta sobre eventos o ven a disfrutar de una experiencia mediterránea auténtica, rodeado de buena gastronomía y mejor ambiente.
           </p>
         </div>
 
@@ -137,7 +137,10 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-medium mb-1">Redes Sociales</h4>
-                  <p className="text-brown-100 hover:underline" href="https://www.instagram.com/elbalcodepremia/">@elbalcopremia</p>
+                  <a className="text-brown-100 hover:underline" 
+                  href="https://www.instagram.com/elbalcodepremia/">
+                    @elbalcodepremia
+                    </a>
                 </div>
               </div>
             </div>

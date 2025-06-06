@@ -8,6 +8,13 @@ const Hero: React.FC = () => {
     setIsVisible(true);
   }, []);
 
+  const handleScrollToContact = () => {
+    const contactElm = document.getElementById('contact');
+    if (contactElm) {
+      contactElm.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden w-full">
       {/* Background Image */}
@@ -33,7 +40,7 @@ const Hero: React.FC = () => {
           Menús diarios, eventos privados y la mejor cocina mediterránea en un entorno único.
         </p>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-          <button className="w-full sm:w-auto px-8 py-3 bg-white text-brown-700 hover:bg-white/90 rounded-full font-medium transition-all">
+          <button className="w-full sm:w-auto px-8 py-3 bg-white text-brown-700 hover:bg-white/90 rounded-full font-medium transition-all" onClick={handleScrollToContact}>
             Reservar Mesa
           </button>
           <button className="w-full sm:w-auto px-8 py-3 bg-transparent border-2 border-white/80 text-white hover:bg-white/10 rounded-full font-medium transition-all">
@@ -46,7 +53,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Scroll Down Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center animate-bounce">
+      <div className="absolute bottom-8 -translate-x-1/2 z-10 flex flex-col items-center animate-bounce">
         <span className="text-sm text-white mb-2">Desliza hacia abajo</span>
         <ArrowDown className="text-white" size={20} />
       </div>

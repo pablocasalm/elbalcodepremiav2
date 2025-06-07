@@ -1,5 +1,4 @@
 // src/components/sections/Admin.tsx
-
 import React, { useState, useEffect, FormEvent } from 'react';
 import { useInView } from '../hooks/useInView';
 
@@ -38,64 +37,51 @@ interface MenuRawJSON {
 }
 
 type KeyPlato =
-  | 'primero1'
-  | 'primero2'
-  | 'primero3'
-  | 'primero4'
-  | 'primero5'
-  | 'primero6'
-  | 'segundo1'
-  | 'segundo2'
-  | 'segundo3'
-  | 'segundo4'
-  | 'segundo5'
-  | 'segundo6'
-  | 'postre1'
-  | 'postre2'
-  | 'postre3'
-  | 'postre4'
-  | 'postre5';
+  | 'primero1' | 'primero2' | 'primero3'
+  | 'primero4' | 'primero5' | 'primero6'
+  | 'segundo1' | 'segundo2' | 'segundo3'
+  | 'segundo4' | 'segundo5' | 'segundo6'
+  | 'postre1'  | 'postre2'  | 'postre3'
+  | 'postre4'  | 'postre5';
 
 const Admin: React.FC = () => {
-  // 1) Variables de entorno
-  const ADMIN_TOKEN = import.meta.env.VITE_ADMIN_TOKEN as string;
+  // 1) Token de administración
+  const ADMIN_TOKEN = "ABC123";
 
-  // Ahora hay dos webhooks distintos:
+  // 2) Rutas a nuestras Netlify Functions
   const WEBHOOK_DAILY   = '/.netlify/functions/update-daily';
   const WEBHOOK_WEEKEND = '/.netlify/functions/update-weekend';
 
-  // 2) Sacamos el token de la URL
-  const raw = window.location.pathname; // "/admin=ABC123" o "/admin=ABC123/"
+  // 3) Extraer token de URL
+  const raw = window.location.pathname; // "/admin=ABC123"
   let tokenFromURL = '';
   if (raw.startsWith('/admin=')) {
-    const after = raw.split('/admin=')[1]; // "ABC123/" o "ABC123"
-    tokenFromURL = after.split('/')[0];    // "ABC123"
+    tokenFromURL = raw.split('/admin=')[1].split('/')[0];
   }
 
-  // 3) Si el token no coincide, redirigimos a home
+  // 4) Redirigir si el token no coincide
   useEffect(() => {
     if (tokenFromURL !== ADMIN_TOKEN) {
       window.location.href = '/';
     }
   }, []);
 
-  // 4) Estado para el TAB que indica qué estamos editando
+  // 5) Control de pestañas
   const [editTab, setEditTab] = useState<'daily' | 'weekend'>('daily');
 
-  // 5) Estados para el JSON de diario y sus flags
+  // 6) Estados de carga y datos
   const [menuDaily, setMenuDaily] = useState<MenuRawJSON | null>(null);
-  const [loadingDaily, setLoadingDaily] = useState<boolean>(true);
-  const [errorDaily, setErrorDaily] = useState<boolean>(false);
+  const [loadingDaily, setLoadingDaily] = useState(true);
+  const [errorDaily, setErrorDaily] = useState(false);
 
-  // 6) Estados para el JSON de fin de semana y sus flags
   const [menuWeekend, setMenuWeekend] = useState<MenuRawJSON | null>(null);
-  const [loadingWeekend, setLoadingWeekend] = useState<boolean>(true);
-  const [errorWeekend, setErrorWeekend] = useState<boolean>(false);
+  const [loadingWeekend, setLoadingWeekend] = useState(true);
+  const [errorWeekend, setErrorWeekend] = useState(false);
 
-  // 7) Estados del formulario (vamos a reutilizar los mismos porque la estructura es idéntica)
-  const [timestamp, setTimestamp] = useState<string>('');
+  // 7) Estados del formulario
+  const [timestamp, setTimestamp] = useState('');
   const [tipo, setTipo] = useState<'daily' | 'weekend'>('daily');
-  const [precio, setPrecio] = useState<string>('');
+  const [precio, setPrecio] = useState('');
 
   const inicialPlato: Plato = { titulo: '', descripcion: '', alergias: '' };
   const [formPlatos, setFormPlatos] = useState<Record<KeyPlato, Plato>>({
@@ -118,9 +104,9 @@ const Admin: React.FC = () => {
     postre5: { ...inicialPlato },
   });
 
-  const [archivoPdf, setArchivoPdf] = useState<string>('');
+  const [archivoPdf, setArchivoPdf] = useState('');
 
-  // 8) useEffect para cargar /menu-daily.json
+  // 8) Carga menú diario
   useEffect(() => {
     fetch('/menu-daily.json?ts=' + Date.now())
       .then(res => {
@@ -130,7 +116,6 @@ const Admin: React.FC = () => {
       .then((json: MenuRawJSON) => {
         setMenuDaily(json);
         if (editTab === 'daily') {
-          // Solo precargamos el formulario si estamos en la pestaña "daily"
           setTimestamp(json.timestamp);
           setTipo('daily');
           setPrecio(json.precio);
@@ -163,9 +148,9 @@ const Admin: React.FC = () => {
       .finally(() => {
         setLoadingDaily(false);
       });
-  }, [editTab]); // reacciona si cambiamos de tab a "daily"
+  }, [editTab]);
 
-  // 9) useEffect para cargar /menu-weekend.json
+  // 9) Carga menú fin de semana
   useEffect(() => {
     fetch('/menu-weekend.json?ts=' + Date.now())
       .then(res => {
@@ -175,7 +160,6 @@ const Admin: React.FC = () => {
       .then((json: MenuRawJSON) => {
         setMenuWeekend(json);
         if (editTab === 'weekend') {
-          // Solo precargamos si estamos en pestaña "weekend"
           setTimestamp(json.timestamp);
           setTipo('weekend');
           setPrecio(json.precio);
@@ -208,9 +192,9 @@ const Admin: React.FC = () => {
       .finally(() => {
         setLoadingWeekend(false);
       });
-  }, [editTab]); // reacciona si cambiamos de tab a "weekend"
+  }, [editTab]);
 
-  // 10) Handler para los campos de plato
+  // 10) Manejar cambios en los platos
   const handlePlatoChange = (
     key: KeyPlato,
     field: keyof Plato,
@@ -225,37 +209,14 @@ const Admin: React.FC = () => {
     }));
   };
 
-  // 11) Al hacer SUBMIT: mandamos el JSON al webhook correcto
+  // 11) Enviar formulario
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const targetJSON = editTab === 'daily' ? menuDaily : menuWeekend;
-    if (!targetJSON) return;
-
     const payload: MenuRawJSON = {
       timestamp,
       tipo,
       precio,
-
-      primero1: formPlatos.primero1,
-      primero2: formPlatos.primero2,
-      primero3: formPlatos.primero3,
-      primero4: formPlatos.primero4,
-      primero5: formPlatos.primero5,
-      primero6: formPlatos.primero6,
-
-      segundo1: formPlatos.segundo1,
-      segundo2: formPlatos.segundo2,
-      segundo3: formPlatos.segundo3,
-      segundo4: formPlatos.segundo4,
-      segundo5: formPlatos.segundo5,
-      segundo6: formPlatos.segundo6,
-
-      postre1: formPlatos.postre1,
-      postre2: formPlatos.postre2,
-      postre3: formPlatos.postre3,
-      postre4: formPlatos.postre4,
-      postre5: formPlatos.postre5,
-
+      ...formPlatos,
       archivo_pdf: archivoPdf,
     };
 
@@ -266,39 +227,42 @@ const Admin: React.FC = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     })
-      .then(res => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      .then(async res => {
+        const text = await res.text();
+        if (!res.ok) {
+          console.error('Error en función:', res.status, text);
+          return alert(
+            `Error ${res.status} al actualizar el menú ${
+              editTab === 'daily' ? 'Diario' : 'Fin de Semana'
+            }:\n${text}`
+          );
+        }
         alert(
           `Menú ${
             editTab === 'daily' ? 'Diario' : 'Fin de Semana'
-          } actualizado. Netlify redeplegará en breve.`
+          } actualizado correctamente.\nNetlify redeplegará en breve.`
         );
       })
       .catch(err => {
-        console.error('Error al enviar datos a Make:', err);
+        console.error('Error en la petición a la función:', err);
         alert(
-          `Hubo un error al actualizar el menú ${
-            editTab === 'daily' ? 'Diario' : 'Fin de Semana'
-          }.`
+          `Hubo un error inesperado al conectar con la función.\n` +
+          `Revisa la consola para más detalles.`
         );
       });
   };
 
-  // 12) Renderizar estados de carga y error según la pestaña
-  if (
-    (editTab === 'daily' && loadingDaily) ||
-    (editTab === 'weekend' && loadingWeekend)
-  ) {
+  // 12) Indicadores de carga / error
+  if ((editTab === 'daily' && loadingDaily) ||
+      (editTab === 'weekend' && loadingWeekend)) {
     return (
       <div className="flex items-center justify-center h-screen">
         <p className="text-gray-500">Cargando datos del menú…</p>
       </div>
     );
   }
-  if (
-    (editTab === 'daily' && errorDaily) ||
-    (editTab === 'weekend' && errorWeekend)
-  ) {
+  if ((editTab === 'daily' && errorDaily) ||
+      (editTab === 'weekend' && errorWeekend)) {
     return (
       <div className="flex items-center justify-center h-screen">
         <p className="text-red-500">
@@ -318,7 +282,7 @@ const Admin: React.FC = () => {
           Selecciona qué menú quieres editar y completa los campos. Solo tú tienes acceso.
         </p>
 
-        {/* 13) PESTAÑAS para elegir “Diario” vs “Fin de Semana” */}
+        {/* PESTAÑAS */}
         <div className="flex justify-center mb-8">
           <button
             onClick={() => setEditTab('daily')}
@@ -342,7 +306,7 @@ const Admin: React.FC = () => {
           </button>
         </div>
 
-        {/* 14) FORMULARIO: igual que antes, pero reutilizamos los estados */}
+        {/* FORMULARIO */}
         <form onSubmit={handleSubmit} className="space-y-8">
           {/* Timestamp */}
           <div>
@@ -360,7 +324,7 @@ const Admin: React.FC = () => {
             />
           </div>
 
-          {/* Tipo (forzamos que coincida con la pestaña, pero lo dejamos editable por si acaso) */}
+          {/* Tipo */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Tipo de menú
@@ -396,13 +360,13 @@ const Admin: React.FC = () => {
 
           <hr className="border-gray-200" />
 
-          {/* Primeros (1 a 6) */}
+          {/* Primeros */}
           <div>
             <h2 className="text-2xl font-serif font-bold mb-4">Primeros</h2>
             <div className="space-y-6">
               {(
                 ['primero1','primero2','primero3','primero4','primero5','primero6'] as KeyPlato[]
-              ).map((key: KeyPlato, idx) => (
+              ).map((key, idx) => (
                 <div key={key} className="border p-4 rounded-lg">
                   <h3 className="font-medium mb-2">Primero {idx + 1}</h3>
                   <div className="mb-2">
@@ -451,13 +415,13 @@ const Admin: React.FC = () => {
 
           <hr className="border-gray-200" />
 
-          {/* Segundos (1 a 6) */}
+          {/* Segundos */}
           <div>
             <h2 className="text-2xl font-serif font-bold mb-4">Segundos</h2>
             <div className="space-y-6">
               {(
                 ['segundo1','segundo2','segundo3','segundo4','segundo5','segundo6'] as KeyPlato[]
-              ).map((key: KeyPlato, idx) => (
+              ).map((key, idx) => (
                 <div key={key} className="border p-4 rounded-lg">
                   <h3 className="font-medium mb-2">Segundo {idx + 1}</h3>
                   <div className="mb-2">
@@ -506,13 +470,13 @@ const Admin: React.FC = () => {
 
           <hr className="border-gray-200" />
 
-          {/* Postres (1 a 5) */}
+          {/* Postres */}
           <div>
             <h2 className="text-2xl font-serif font-bold mb-4">Postres</h2>
             <div className="space-y-6">
               {(
                 ['postre1','postre2','postre3','postre4','postre5'] as KeyPlato[]
-              ).map((key: KeyPlato, idx) => (
+              ).map((key, idx) => (
                 <div key={key} className="border p-4 rounded-lg">
                   <h3 className="font-medium mb-2">Postre {idx + 1}</h3>
                   <div className="mb-2">

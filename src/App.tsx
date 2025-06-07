@@ -10,12 +10,19 @@ import Events from './components/sections/Events';
 import ClubConnection from './components/sections/ClubConnection';
 import Contact from './components/sections/Contact';
 import ScrollToTop from './components/ui/ScrollToTop';
+import Admin from './components/sections/Admin';
 
 function App() {
+  // Si la URL es /admin=ALGOTOKEN, renderizamos Admin.tsx y nada más.
+  if (window.location.pathname.startsWith('/admin=')) {
+    return <Admin />;
+  }
+
+  // Si no, renderizamos el sitio normal:
   return (
     <div className="font-sans bg-neutral-50 text-neutral-900 overflow-x-hidden w-full">
       <Header />
-      <main className="overflow-x-hidden w-full">
+      <main>
         <Hero />
         <About />
         <Cuisine />
@@ -32,3 +39,4 @@ function App() {
 }
 
 export default App;
+

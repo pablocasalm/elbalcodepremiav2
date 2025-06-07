@@ -1,0 +1,14 @@
+[build]
+  command   = "npm run build"
+  publish   = "dist"       # o la carpeta que genere tu build de Vite
+
+[dev]
+  # Le decimos a Netlify Dev que, para el frontend, use "npm run dev"
+  command    = "npm run dev"
+  # Puerto interno donde corre Vite
+  targetPort = 5173
+  # (opcional) en qué puerto te expondrá Netlify Dev. Por defecto es 8888
+  port       = 8888
+
+[functions]
+  directory = "netlify/functions"

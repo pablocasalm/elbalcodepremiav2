@@ -23,7 +23,7 @@ const MenuCard: React.FC<MenuCardProps> = ({
         />
       </div>*/}
       <div className="p-6">
-        <h3 className="text-xl font-serif font-bold text-neutral-800 mb-3">{title}</h3>
+        <p className="text-xl font-serif font-bold text-neutral-800 mb-3">{title}</p>
         <p className="text-neutral-600 mb-4">{description}</p>
         {dietary.length > 0 && (
           <div className="flex flex-wrap gap-2">

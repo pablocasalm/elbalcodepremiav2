@@ -1,7 +1,8 @@
 {
   "timestamp": "2025-06-06T12:00:00Z",
-  "tipo": "diario",
-  
+  "tipo": "daily", 
+  "precio": "18",       
+
   "primero1": {
     "titulo": "Ensalada Mediterránea",
     "descripcion": "Verduras frescas con queso feta y aceitunas.",
@@ -9,7 +10,7 @@
   },
   "primero2": {
     "titulo": "Sopa de Pescado",
-    "descripcion": "Sopa tradicional mediterránea con pescado fresco.",
+    "descripcion": "Sopa tradicional con pescado fresco.",
     "alergias": "Pescado"
   },
   "primero3": {
@@ -19,7 +20,7 @@
   },
   "primero4": {
     "titulo": "Tortilla de Patatas",
-    "descripcion": "Tradicional tortilla española con cebolla caramelizada.",
+    "descripcion": "Tortilla española con cebolla.",
     "alergias": "Huevos"
   },
   "primero5": {
@@ -55,7 +56,7 @@
   },
   "segundo5": {
     "titulo": "Pisto Manchego",
-    "descripcion": "Verduras de temporada guisadas al estilo manchego.",
+    "descripcion": "Verduras de temporada al estilo manchego.",
     "alergias": "Sin alérgenos"
   },
   "segundo6": {
@@ -67,7 +68,7 @@
   "postre1": {
     "titulo": "Crema Catalana",
     "descripcion": "Postre tradicional con azúcar caramelizado.",
-    "alergias": "Lácteos, Huevo"
+    "alergias": "Lácteos, Huevos"
   },
   "postre2": {
     "titulo": "Tarta de Queso Casera",
@@ -90,5 +91,5 @@
     "alergias": "Sin alérgenos"
   },
 
-  "archivo_pdf": "https://ejemplo.com/menus/menu-2025-06-06.pdf"
+  "archivo_pdf": "https://ejemplo.com/menus/menu-completo.pdf"
 }

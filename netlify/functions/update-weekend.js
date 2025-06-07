@@ -19,39 +19,49 @@ export const handler = async (event) => {
     const path   = "public/menu-weekend.json";
 
     // 1) Obtener SHA y contenido actual
-    const { data: fileData } = await octokit.repos.getContent({
+    const response = await octokit.rest.repos.getContent({
       owner,
       repo,
       path,
-      ref: branch
+      ref: branch,
     });
-    const sha = fileData.sha;
+    const fileData = response.data;
+    const sha      = fileData.sha;
+    const contentB64 = fileData.content;
 
-    // 2) Decodificar y parsear el JSON actual para conservar "incluye"
-    const existing = JSON.parse(
-      Buffer.from(fileData.content, "base64").toString("utf8")
-    );
+    // 2) Parsear el JSON actual para conservar "incluye"
+    const existing = JSON.parse(Buffer.from(contentB64, "base64").toString("utf8"));
 
-    // 3) Construir el objeto final: todo lo que venga en payload + incluye estático
+    // 3) Fusionar payload + incluye estático
     const merged = {
       ...payload,
-      incluye: existing.incluye
+      incluye: existing.incluye,
     };
 
-    // 4) Subir merged al repositorio
-    await octokit.repos.createOrUpdateFileContents({
+    // 4) Subir merged
+    await octokit.rest.repos.createOrUpdateFileContents({
       owner,
       repo,
       path,
       message: "Actualiza menú fin de semana desde función JS",
       content: Buffer.from(JSON.stringify(merged, null, 2)).toString("base64"),
       sha,
-      branch
+      branch,
     });
 
-    return { statusCode: 200, body: JSON.stringify({ ok: true }) };
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ ok: true }),
+    };
   } catch (err) {
     console.error(err);
-    return { statusCode: err.status || 500, body: err.message };
+    return {
+      statusCode: err.status || 500,
+      body: JSON.stringify({
+        errorType: err.name,
+        errorMessage: err.message,
+        stack: err.stack,
+      }),
+    };
   }
 };

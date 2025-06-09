@@ -15,6 +15,13 @@ const Hero: React.FC = () => {
     }
   };
 
+  const handleScrollToMenu = () => {
+    const menuElm = document.getElementById('menus');
+    if (menuElm) {
+      menuElm.scrollIntoView({behavior: 'smooth'});
+    }
+  };
+
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden w-full">
       {/* Background Image */}
@@ -43,7 +50,7 @@ const Hero: React.FC = () => {
           <button className="w-full sm:w-auto px-8 py-3 bg-white text-brown-700 hover:bg-white/90 rounded-full font-medium transition-all" onClick={handleScrollToContact}>
             Reservar Mesa
           </button>
-          <button className="w-full sm:w-auto px-8 py-3 bg-transparent border-2 border-white/80 text-white hover:bg-white/10 rounded-full font-medium transition-all">
+          <button className="w-full sm:w-auto px-8 py-3 bg-transparent border-2 border-white/80 text-white hover:bg-white/10 rounded-full font-medium transition-all" onClick={handleScrollToContact}>
             Explorar Menú
           </button>
         </div>

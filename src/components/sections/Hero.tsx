@@ -50,7 +50,7 @@ const Hero: React.FC = () => {
           <button className="w-full sm:w-auto px-8 py-3 bg-white text-brown-700 hover:bg-white/90 rounded-full font-medium transition-all" onClick={handleScrollToContact}>
             Reservar Mesa
           </button>
-          <button className="w-full sm:w-auto px-8 py-3 bg-transparent border-2 border-white/80 text-white hover:bg-white/10 rounded-full font-medium transition-all" onClick={handleScrollToContact}>
+          <button className="w-full sm:w-auto px-8 py-3 bg-transparent border-2 border-white/80 text-white hover:bg-white/10 rounded-full font-medium transition-all" onClick={handleScrollToMenu}>
             Explorar Menú
           </button>
         </div>

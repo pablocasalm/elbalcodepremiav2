@@ -60,7 +60,7 @@ const Header: React.FC = () => {
             </a>*/}
             
         <img
-          src={isScrolled ? "public/logos/logo-brown-700 copy.png" : "public/logos/logo-white copy.png"}
+          src={isScrolled ? "logos/logo-brown-700 copy.png" : "logos/logo-white copy.png"}
           alt="Logo El Balcó de Premià"
           className="h-8 w-auto"
         />

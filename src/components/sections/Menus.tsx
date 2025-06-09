@@ -58,11 +58,23 @@ type MenuType = 'daily' | 'weekend';
 const Menus: React.FC = () => {
   const [activeMenu, setActiveMenu] = useState<MenuType>('daily');
   const { ref: sectionRef, inView } = useInView({ threshold: 0.2 });
-  const [hasBeenInView, setHasBeenInView] = useState(false);
 
+  // detectar móvil y asegurar visibilidad
+  const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
-    if (inView) setHasBeenInView(true);
-  }, [inView]);
+    const checkMobile = () => setIsMobile(window.innerWidth < 640);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // controlar animación una vez visible o en móvil
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    if (inView || isMobile) {
+      setVisible(true);
+    }
+  }, [inView, isMobile]);
 
   const [menuDaily, setMenuDaily] = useState<MenuRawJSON | null>(null);
   const [menuWeekend, setMenuWeekend] = useState<MenuRawJSON | null>(null);
@@ -74,7 +86,7 @@ const Menus: React.FC = () => {
   useEffect(() => {
     fetch(`/menu-daily.json?ts=${Date.now()}`)
       .then(res => { if (!res.ok) throw new Error(); return res.json(); })
-      .then((json: MenuRawJSON) => setMenuDaily(json))
+      .then(json => setMenuDaily(json))
       .catch(() => setErrorDaily(true))
       .finally(() => setLoadingDaily(false));
   }, []);
@@ -82,12 +94,10 @@ const Menus: React.FC = () => {
   useEffect(() => {
     fetch(`/menu-weekend.json?ts=${Date.now()}`)
       .then(res => { if (!res.ok) throw new Error(); return res.json(); })
-      .then((json: MenuRawJSON) => setMenuWeekend(json))
+      .then(json => setMenuWeekend(json))
       .catch(() => setErrorWeekend(true))
       .finally(() => setLoadingWeekend(false));
   }, []);
-
-  const menuToShow = activeMenu === 'daily' ? menuDaily : menuWeekend;
 
   if ((activeMenu === 'daily' && loadingDaily) || (activeMenu === 'weekend' && loadingWeekend)) {
     return (
@@ -108,6 +118,7 @@ const Menus: React.FC = () => {
     );
   }
 
+  const menuToShow = activeMenu === 'daily' ? menuDaily : menuWeekend;
   if (!menuToShow) return null;
 
   return (
@@ -121,8 +132,9 @@ const Menus: React.FC = () => {
           </p>
         </div>
 
+        {/* Tabs */}
         <div className="flex justify-center mb-12 gap-4">
-          {(['daily', 'weekend'] as MenuType[]).map(type => (
+          {(['daily','weekend'] as MenuType[]).map(type => (
             <button
               key={type}
               onClick={() => setActiveMenu(type)}
@@ -130,31 +142,27 @@ const Menus: React.FC = () => {
                 activeMenu === type ? 'bg-brown-700 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-100'
               }`}
             >
-              {type === 'daily' ? 'Menú Diario' : 'Menú Fin de Semana'}
+              {type==='daily' ? 'Menú Diario' : 'Menú Fin de Semana'}
             </button>
           ))}
         </div>
 
-        <div className={`space-y-12 transition-all duration-700 transform ${hasBeenInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+        <div className={`space-y-12 transition-all duration-700 transform ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
           {[
-            { label: 'Primeros', items: extraerPrimero(menuToShow) },
-            { label: 'Segundos', items: extraerSegundo(menuToShow) },
-            { label: 'Postres', items: extraerPostre(menuToShow) },
+            { label:'Primeros', items: extraerPrimero(menuToShow)},
+            { label:'Segundos', items: extraerSegundo(menuToShow)},
+            { label:'Postres', items: extraerPostre(menuToShow)},
           ].map(section => (
             <div key={section.label}>
               <h3 className="text-2xl font-serif font-bold text-center mb-8">{section.label}</h3>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
                 {section.items.map((item, idx) => (
-                  <div key={idx} className="w-full">
-                    <MenuCard
-                      title={item.titulo}
-                      description={item.descripcion}
-                      dietary={item.alergias
-                        .split(',')
-                        .map(a => a.trim())
-                        .filter(a => a)}
-                    />
-                  </div>
+                  <MenuCard
+                    key={idx}
+                    title={item.titulo}
+                    description={item.descripcion}
+                    dietary={item.alergias.split(',').map(a=>a.trim()).filter(a=>a)}
+                  />
                 ))}
               </div>
             </div>
@@ -167,17 +175,12 @@ const Menus: React.FC = () => {
 
           {menuToShow.archivo_pdf && (
             <div className="text-center mt-12">
-              <a
-                href={menuToShow.archivo_pdf}
-                target="_blank"
-                rel="noopener noreferrer"
+              <a href={menuToShow.archivo_pdf} target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center px-6 py-3 rounded-full bg-white text-brown-700 hover:bg-neutral-100 font-medium transition-all"
               >
                 <FilePdf className="mr-2" size={18} /> Descargar Menú Completo
               </a>
-              <p className="mt-4 text-neutral-600 italic text-sm">
-                Si tienes alguna alergia o intolerancia, informa a nuestros camareros
-              </p>
+              <p className="mt-4 text-neutral-600 italic text-sm">Si tienes alguna alergia o intolerancia, informa a nuestros camareros</p>
             </div>
           )}
         </div>

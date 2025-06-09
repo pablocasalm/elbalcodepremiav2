@@ -27,7 +27,6 @@ function App() {
         <About />
         <Cuisine />
         <Menus />
-        <Chefs />
         <Events />
         <ClubConnection />
         <Contact />

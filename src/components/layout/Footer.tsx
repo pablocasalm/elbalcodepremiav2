@@ -49,11 +49,17 @@ const Footer: React.FC = () => {
           </div>
           
           <div>
-            <h4 className="text-lg font-medium mb-4">Horario</h4>
+            <h4 className="text-lg font-medium mb-4">Horario Restaurante</h4>
             <ul className="space-y-2">
-              <li className="text-brown-100/80">Martes - Viernes: 12:00 - 23:00</li>
-              <li className="text-brown-100/80">Sábado - Domingo: 11:00 - 23:00</li>
-              <li className="text-brown-100/80">Lunes: Cerrado</li>
+              <li className="text-brown-100/80">Miércoles - Domingo: 13:00 - 16:00 y 20:00 - 23:00</li>
+              <li className="text-brown-100/80">Lunes y Martes: Cerrado</li>
+            </ul>
+          
+
+          
+            <h4 className="text-lg font-medium mb-4 mt-4">Horario Cafetería</h4>
+            <ul className="space-y-2">
+              <li className="text-brown-100/80">Lunes - Domingo: 9:00 - 22:30</li>
             </ul>
           </div>
         </div>

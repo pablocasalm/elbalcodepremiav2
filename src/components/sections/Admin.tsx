@@ -46,7 +46,7 @@ type KeyPlato =
 
 const Admin: React.FC = () => {
   // 1) Token de administración
-  const ADMIN_TOKEN = "ABC123";
+  const ADMIN_TOKEN = import.meta.env.VITE_ADMIN_TOKEN;
 
   // 2) Rutas a nuestras Netlify Functions
   const WEBHOOK_DAILY   = '/.netlify/functions/update-daily';

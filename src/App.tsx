@@ -10,6 +10,7 @@ import ClubConnection from './components/sections/ClubConnection';
 import Contact from './components/sections/Contact';
 import ScrollToTop from './components/ui/ScrollToTop';
 import Admin from './components/sections/Admin';
+import Login from './components/sections/login';
 
 function App() {
   // Si la URL es /admin=ALGOTOKEN, renderizamos Admin.tsx y nada más.
@@ -17,6 +18,17 @@ function App() {
     return <Admin />;
   }
 
+  const path = window.location.pathname;
+
+  // 1) si es /login, mostrar Login
+  if (path === '/login') {
+    return <Login />;
+  }
+
+  // 2) si es /admin=TOKEN, mostrar Admin
+  if (path.startsWith('/admin=')) {
+    return <Admin />;
+  }
   // Si no, renderizamos el sitio normal:
   return (
     <div className="font-sans bg-neutral-50 text-neutral-900 overflow-x-hidden w-full">

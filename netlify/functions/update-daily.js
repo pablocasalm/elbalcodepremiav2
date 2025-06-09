@@ -1,68 +1,67 @@
 // netlify/functions/update-daily.js
-import { Octokit } from "@octokit/rest";
-
-export const handler = async (event) => {
-  if (event.httpMethod !== "POST") {
+export const handler = async ({ httpMethod, body }) => {
+  if (httpMethod !== "POST") {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
 
   try {
-    const payload = JSON.parse(event.body);
+    const payload = JSON.parse(body);
     if (payload.tipo !== "daily") {
       return { statusCode: 400, body: "Invalid menu tipo" };
     }
 
-    const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
     const owner  = process.env.GITHUB_OWNER;
     const repo   = process.env.GITHUB_REPO;
     const branch = process.env.GITHUB_BRANCH;
     const path   = "public/menu-daily.json";
+    const token  = process.env.GITHUB_TOKEN;
+    const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
 
-    // 1) Leer el fichero (GET /repos/{owner}/{repo}/contents/{path})
-    const getRes = await octokit.request(
-      "GET /repos/{owner}/{repo}/contents/{path}",
-      { owner, repo, path, ref: branch }
-    );
-    const fileData  = getRes.data;
-    const sha       = fileData.sha;
-    const contentB64 = fileData.content;
-
-    // 2) Mantener “incluye” del JSON actual
-    const existing = JSON.parse(Buffer.from(contentB64, "base64").toString("utf8"));
-
-    // 3) Fusionar payload + incluye
-    const merged = {
-      ...payload,
-      incluye: existing.incluye,
-    };
-
-    // 4) Empujar los cambios (PUT /repos/{owner}/{repo}/contents/{path})
-    await octokit.request(
-      "PUT /repos/{owner}/{repo}/contents/{path}",
-      {
-        owner,
-        repo,
-        path,
-        message: "Actualiza menú diario desde función JS",
-        content: Buffer.from(JSON.stringify(merged, null, 2)).toString("base64"),
-        sha,
-        branch,
+    // 1) Leer contenido
+    const getRes = await fetch(`${apiUrl}?ref=${branch}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/vnd.github.v3+json",
+        "User-Agent": "netlify-function"
       }
-    );
+    });
+    if (!getRes.ok) throw await getRes.json();
+    const fileData = await getRes.json();
+    const existing = JSON.parse(Buffer.from(fileData.content, "base64").toString("utf8"));
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ ok: true }),
+    // 2) Fusionar y re-subir
+    const mergedContent = {
+      ...payload,
+      incluye: existing.incluye
     };
+    const putRes = await fetch(apiUrl, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/vnd.github.v3+json",
+        "User-Agent": "netlify-function",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: "Actualiza menú diario desde función JS",
+        content: Buffer.from(JSON.stringify(mergedContent, null, 2)).toString("base64"),
+        sha: fileData.sha,
+        branch
+      })
+    });
+    const result = await putRes.json();
+    if (!putRes.ok) throw result;
+
+    return { statusCode: 200, body: JSON.stringify({ ok: true }) };
   } catch (err) {
     console.error(err);
     return {
       statusCode: err.status || 500,
       body: JSON.stringify({
-        errorType: err.name,
-        errorMessage: err.message,
-        stack: err.stack,
-      }),
+        errorType: err.name || "Error",
+        errorMessage: err.message || err,
+        stack: err.stack || null
+      })
     };
   }
 };

@@ -5,7 +5,6 @@ import Hero from './components/sections/Hero';
 import About from './components/sections/About';
 import Cuisine from './components/sections/Cuisine';
 import Menus from './components/sections/Menus';
-import Chefs from './components/sections/Chefs';
 import Events from './components/sections/Events';
 import ClubConnection from './components/sections/ClubConnection';
 import Contact from './components/sections/Contact';

@@ -55,12 +55,13 @@ export const handler = async ({ httpMethod, body }) => {
     return { statusCode: 200, body: JSON.stringify({ ok: true }) };
   } catch (err) {
     console.error(err);
+    const code = parseInt(err.status) || parseInt(err.statusCode) || 500;
     return {
-      statusCode: err.status || 500,
+      statusCode: code,
       body: JSON.stringify({
         errorType: err.name || "Error",
         errorMessage: err.message || err,
-        stack: err.stack || null
+        details: err
       })
     };
   }

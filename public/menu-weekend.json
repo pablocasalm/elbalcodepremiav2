@@ -1,96 +1,92 @@
 {
-    "timestamp": "2025-06-07T12:00:00Z",
-    "tipo": "weekend",
-    "precio": "45",
-    "incluye": "Incluye pan y agua",
-  
-    "primero1": {
-      "titulo": "Mariscada",
-      "descripcion": "Selección de marisco más fresco local, incluyendo gambas, ostras, mejillones y almejas.",
-      "alergias": "Crustáceos, Moluscos"
-    },
-    "primero2": {
-      "titulo": "Ensalada de Gambas",
-      "descripcion": "Gambas frescas sobre cama de lechugas y cítricos.",
-      "alergias": "Crustáceos"
-    },
-    "primero3": {
-      "titulo": "Paté de Salmón",
-      "descripcion": "Paté casero de salmón con tostadas.",
-      "alergias": "Pescado, Lácteos"
-    },
-    "primero4": {
-      "titulo": "Vieiras a la Plancha",
-      "descripcion": "Vieiras frescas con reducción de vino blanco.",
-      "alergias": "Moluscos"
-    },
-    "primero5": {
-      "titulo": "Foie a la Plancha",
-      "descripcion": "Foie fresco con manzana caramelizada.",
-      "alergias": "Lácteos"
-    },
-    "primero6": {
-      "titulo": "Sopa de Mariscos",
-      "descripcion": "Sopa ligera con una variedad de mariscos y toques de jengibre.",
-      "alergias": "Crustáceos, Moluscos"
-    },
-  
-    "segundo1": {
-      "titulo": "Risotto de Setas",
-      "descripcion": "Risotto cremoso con setas silvestres y Parmesano envejecido.",
-      "alergias": "Lácteos, Gluten"
-    },
-    "segundo2": {
-      "titulo": "Cordero Asado",
-      "descripcion": "Cordero local asado lentamente con hierbas provenzales.",
-      "alergias": "Sin alérgenos"
-    },
-    "segundo3": {
-      "titulo": "Solomillo de Buey",
-      "descripcion": "Solomillo jugoso con reducción de Oporto.",
-      "alergias": "Sin alérgenos"
-    },
-    "segundo4": {
-      "titulo": "Lubina al Horno",
-      "descripcion": "Lubina salvaje al horno con patatas panadera.",
-      "alergias": "Pescado"
-    },
-    "segundo5": {
-      "titulo": "Carrillera de Ternera",
-      "descripcion": "Carrillera guisada al vino tinto con puré de patata.",
-      "alergias": "Sin alérgenos"
-    },
-    "segundo6": {
-      "titulo": "Entrecot a la Brasa",
-      "descripcion": "Entrecot de vacuno a la brasa con aceite de romero.",
-      "alergias": "Sin alérgenos"
-    },
-  
-    "postre1": {
-      "titulo": "Tarta de Queso Casera",
-      "descripcion": "Suave tarta de queso con mermelada de frutos rojos.",
-      "alergias": "Lácteos"
-    },
-    "postre2": {
-      "titulo": "Brownie de Chocolate",
-      "descripcion": "Brownie caliente con helado de vainilla.",
-      "alergias": "Lácteos, Frutos secos"
-    },
-    "postre3": {
-      "titulo": "Coulant de Chocolate",
-      "descripcion": "Coulant negro con corazón líquido y frambuesas.",
-      "alergias": "Lácteos, Gluten"
-    },
-    "postre4": {
-      "titulo": "Macedonia de Frutas",
-      "descripcion": "Selección de frutas frescas de temporada con menta.",
-      "alergias": "Sin alérgenos"
-    },
-    "postre5": {
-      "titulo": "Helado Artesano",
-      "descripcion": "Helado casero (preguntar sabores disponibles).",
-      "alergias": "Lácteos"
-    },
-  
-    "archivo_pdf": "https://ejemplo.com/menus/menu-weekend-2025-06-07.pdf"
-  }
+  "timestamp": "2025-06-07T12:00:00Z",
+  "tipo": "weekend",
+  "precio": "26.95",
+  "primero1": {
+    "titulo": "Mariscada",
+    "descripcion": "Selección de marisco más fresco local, incluyendo gambas, ostras, mejillones y almejas.",
+    "alergias": "Crustáceos, Moluscos"
+  },
+  "primero2": {
+    "titulo": "Ensalada de Gambas",
+    "descripcion": "Gambas frescas sobre cama de lechugas y cítricos.",
+    "alergias": "Crustáceos"
+  },
+  "primero3": {
+    "titulo": "Paté de Salmón",
+    "descripcion": "Paté casero de salmón con tostadas.",
+    "alergias": "Pescado, Lácteos"
+  },
+  "primero4": {
+    "titulo": "Vieiras a la Plancha",
+    "descripcion": "Vieiras frescas con reducción de vino blanco.",
+    "alergias": "Moluscos"
+  },
+  "primero5": {
+    "titulo": "Foie a la Plancha",
+    "descripcion": "Foie fresco con manzana caramelizada.",
+    "alergias": "Lácteos"
+  },
+  "primero6": {
+    "titulo": "Sopa de Mariscos",
+    "descripcion": "Sopa ligera con una variedad de mariscos y toques de jengibre.",
+    "alergias": "Crustáceos, Moluscos"
+  },
+  "segundo1": {
+    "titulo": "Risotto de Setas",
+    "descripcion": "Risotto cremoso con setas silvestres y Parmesano envejecido.",
+    "alergias": "Lácteos, Gluten"
+  },
+  "segundo2": {
+    "titulo": "Cordero Asado",
+    "descripcion": "Cordero local asado lentamente con hierbas provenzales.",
+    "alergias": "Sin alérgenos"
+  },
+  "segundo3": {
+    "titulo": "Solomillo de Buey",
+    "descripcion": "Solomillo jugoso con reducción de Oporto.",
+    "alergias": "Sin alérgenos"
+  },
+  "segundo4": {
+    "titulo": "Lubina al Horno",
+    "descripcion": "Lubina salvaje al horno con patatas panadera.",
+    "alergias": "Pescado"
+  },
+  "segundo5": {
+    "titulo": "Carrillera de Ternera",
+    "descripcion": "Carrillera guisada al vino tinto con puré de patata.",
+    "alergias": "Sin alérgenos"
+  },
+  "segundo6": {
+    "titulo": "Entrecot a la Brasa",
+    "descripcion": "Entrecot de vacuno a la brasa con aceite de romero.",
+    "alergias": "Sin alérgenos"
+  },
+  "postre1": {
+    "titulo": "Tarta de Queso Casera",
+    "descripcion": "Suave tarta de queso con mermelada de frutos rojos.",
+    "alergias": "Lácteos"
+  },
+  "postre2": {
+    "titulo": "Brownie de Chocolate",
+    "descripcion": "Brownie caliente con helado de vainilla.",
+    "alergias": "Lácteos, Frutos secos"
+  },
+  "postre3": {
+    "titulo": "Coulant de Chocolate",
+    "descripcion": "Coulant negro con corazón líquido y frambuesas.",
+    "alergias": "Lácteos, Gluten"
+  },
+  "postre4": {
+    "titulo": "Macedonia de Frutas",
+    "descripcion": "Selección de frutas frescas de temporada con menta.",
+    "alergias": "Sin alérgenos"
+  },
+  "postre5": {
+    "titulo": "Helado Artesano",
+    "descripcion": "Helado casero (preguntar sabores disponibles).",
+    "alergias": "Lácteos"
+  },
+  "archivo_pdf": "https://ejemplo.com/menus/menu-weekend-2025-06-07.pdf",
+  "incluye": "Incluye pan y agua"
+}

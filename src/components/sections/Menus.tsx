@@ -41,29 +41,16 @@ interface MenuRawJSON {
 }
 
 function extraerPrimero(raw: MenuRawJSON): Plato[] {
-  return [
-    raw.primero1,
-    raw.primero2,
-    raw.primero3,
-    raw.primero4,
-    raw.primero5,
-    raw.primero6,
-  ].filter(p => p && p.titulo.trim());
+  return [raw.primero1, raw.primero2, raw.primero3, raw.primero4, raw.primero5, raw.primero6]
+    .filter(p => p && p.titulo.trim());
 }
 function extraerSegundo(raw: MenuRawJSON): Plato[] {
-  return [
-    raw.segundo1,
-    raw.segundo2,
-    raw.segundo3,
-    raw.segundo4,
-    raw.segundo5,
-    raw.segundo6,
-  ].filter(p => p && p.titulo.trim());
+  return [raw.segundo1, raw.segundo2, raw.segundo3, raw.segundo4, raw.segundo5, raw.segundo6]
+    .filter(p => p && p.titulo.trim());
 }
 function extraerPostre(raw: MenuRawJSON): Plato[] {
-  return [raw.postre1, raw.postre2, raw.postre3, raw.postre4, raw.postre5].filter(
-    p => p && p.titulo.trim()
-  );
+  return [raw.postre1, raw.postre2, raw.postre3, raw.postre4, raw.postre5]
+    .filter(p => p && p.titulo.trim());
 }
 
 type MenuType = 'daily' | 'weekend';
@@ -71,6 +58,11 @@ type MenuType = 'daily' | 'weekend';
 const Menus: React.FC = () => {
   const [activeMenu, setActiveMenu] = useState<MenuType>('daily');
   const { ref: sectionRef, inView } = useInView({ threshold: 0.2 });
+  const [hasBeenInView, setHasBeenInView] = useState(false);
+
+  useEffect(() => {
+    if (inView) setHasBeenInView(true);
+  }, [inView]);
 
   const [menuDaily, setMenuDaily] = useState<MenuRawJSON | null>(null);
   const [menuWeekend, setMenuWeekend] = useState<MenuRawJSON | null>(null);
@@ -80,28 +72,18 @@ const Menus: React.FC = () => {
   const [errorWeekend, setErrorWeekend] = useState(false);
 
   useEffect(() => {
-    fetch(
-      `/menu-daily.json?ts=${Date.now()}`
-    )
-      .then(res => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-      })
+    fetch(`/menu-daily.json?ts=${Date.now()}`)
+      .then(res => { if (!res.ok) throw new Error(); return res.json(); })
       .then((json: MenuRawJSON) => setMenuDaily(json))
-      .catch(err => { console.error(err); setErrorDaily(true); })
+      .catch(() => setErrorDaily(true))
       .finally(() => setLoadingDaily(false));
   }, []);
 
   useEffect(() => {
-    fetch(
-      `/menu-weekend.json?ts=${Date.now()}`
-    )
-      .then(res => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-      })
+    fetch(`/menu-weekend.json?ts=${Date.now()}`)
+      .then(res => { if (!res.ok) throw new Error(); return res.json(); })
       .then((json: MenuRawJSON) => setMenuWeekend(json))
-      .catch(err => { console.error(err); setErrorWeekend(true); })
+      .catch(() => setErrorWeekend(true))
       .finally(() => setLoadingWeekend(false));
   }, []);
 
@@ -139,7 +121,6 @@ const Menus: React.FC = () => {
           </p>
         </div>
 
-        {/* Tabs */}
         <div className="flex justify-center mb-12 gap-4">
           {(['daily', 'weekend'] as MenuType[]).map(type => (
             <button
@@ -154,7 +135,7 @@ const Menus: React.FC = () => {
           ))}
         </div>
 
-        <div className={`space-y-12 transition-all duration-700 transform ${inView ? 'opacity-100' : 'opacity-0 translate-y-6'}`}>
+        <div className={`space-y-12 transition-all duration-700 transform ${hasBeenInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
           {[
             { label: 'Primeros', items: extraerPrimero(menuToShow) },
             { label: 'Segundos', items: extraerSegundo(menuToShow) },
@@ -171,8 +152,7 @@ const Menus: React.FC = () => {
                       dietary={item.alergias
                         .split(',')
                         .map(a => a.trim())
-                        .filter(a => a)
-                      }
+                        .filter(a => a)}
                     />
                   </div>
                 ))}

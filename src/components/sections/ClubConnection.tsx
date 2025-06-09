@@ -16,7 +16,7 @@ const ClubConnection: React.FC = () => {
             }`}
           >
             <img 
-              src="https://images.pexels.com/photos/6524051/pexels-photo-6524051.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+              src="imagenes/ElBalcoCTPD_20250601_087.jpg" 
               alt="Club de Tenis" 
               className="w-full h-full object-cover"
             />

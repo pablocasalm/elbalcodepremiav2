@@ -13,8 +13,18 @@ export const handler = async ({ httpMethod, body }) => {
     const owner  = process.env.GITHUB_OWNER;
     const repo   = process.env.GITHUB_REPO;
     const branch = process.env.GITHUB_BRANCH;
-    const path   = "public/menu-weekend.json";
     const token  = process.env.GITHUB_TOKEN;
+    console.log("–– DEBUG ENV ––", {
+      owner,
+      repo,
+      branch,
+      tokenExists: Boolean(token)
+    });
+    //const owner  = process.env.GITHUB_OWNER;
+    //const repo   = process.env.GITHUB_REPO;
+    //const branch = process.env.GITHUB_BRANCH;
+    const path   = "public/menu-weekend.json";
+    //const token  = process.env.GITHUB_TOKEN;
     const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
 
     // 1) Leer contenido

@@ -20,11 +20,11 @@ const Login: React.FC = () => {
       if (res.ok) {
         const { token } = await res.json();
         sessionStorage.setItem('admin-token', token);
-        // redirige incluyendo el token en la ruta
+        // redirige al admin con token en la URL
         window.location.href = `/admin=${token}`;
       } else {
         const { error: msg } = await res.json();
-        setError(msg || 'Error de autenticación');
+        setError(msg || 'Credenciales inválidas');
       }
     } catch {
       setError('Error de conexión');
@@ -32,25 +32,21 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100vh'
-      }}
-    >
-      <form
-        onSubmit={handleSubmit}
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          width: 300,
-          padding: '2rem',
-          boxShadow: '0 0 10px rgba(0,0,0,0.1)',
-          borderRadius: '8px'
-        }}
-      >
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: '100vh'
+    }}>
+      <form onSubmit={handleSubmit}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              width: 300,
+              padding: '2rem',
+              boxShadow: '0 0 10px rgba(0,0,0,0.1)',
+              borderRadius: '8px'
+            }}>
         <h2 style={{ textAlign: 'center', marginBottom: '1rem' }}>Admin Login</h2>
 
         <input
@@ -71,17 +67,15 @@ const Login: React.FC = () => {
           style={{ padding: '0.5rem', marginBottom: '1rem' }}
         />
 
-        <button
-          type="submit"
-          style={{
-            padding: '0.5rem',
-            backgroundColor: '#333',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer'
-          }}
-        >
+        <button type="submit"
+                style={{
+                  padding: '0.5rem',
+                  backgroundColor: '#333',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '4px',
+                  cursor: 'pointer'
+                }}>
           Entrar
         </button>
 

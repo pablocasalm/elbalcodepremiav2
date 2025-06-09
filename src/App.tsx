@@ -20,15 +20,16 @@ function App() {
 
   const path = window.location.pathname;
 
-  // 1) si es /login, mostrar Login
-  if (path === '/login') {
-    return <Login />;
-  }
-
-  // 2) si es /admin=TOKEN, mostrar Admin
-  if (path.startsWith('/admin=')) {
-    return <Admin />;
-  }
+  
+    // 1) /login → Login
+    if (path === '/login') {
+      return <Login />;
+    }
+  
+    // 2) /admin=TOKEN → Admin
+    if (path.startsWith('/admin=')) {
+   return <Admin />;
+}
   // Si no, renderizamos el sitio normal:
   return (
     <div className="font-sans bg-neutral-50 text-neutral-900 overflow-x-hidden w-full">

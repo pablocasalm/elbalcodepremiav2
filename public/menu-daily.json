@@ -1,96 +1,92 @@
 {
-    "timestamp": "2025-06-06T12:00:00Z",
-    "tipo": "daily",
-    "precio": "32",
-    "incluye": "Incluye pan y agua, copa de vino, refresco o cerveza",
-  
-    "primero1": {
-      "titulo": "Ensalada de burrata con tomates de proximidad y pesto de albahaca",
-      "descripcion": "Amanida de burrata amb tomaquets de proximitat i pesto d'alfabrega",
-      "alergias": "Lácteos"
-    },
-    "primero2": {
-      "titulo": "Sopa de Pescado",
-      "descripcion": "Sopa tradicional con pescado fresco.",
-      "alergias": "Pescado"
-    },
-    "primero3": {
-      "titulo": "Gazpacho Andaluz",
-      "descripcion": "Sopa fría de tomate, pepino y pimiento.",
-      "alergias": "Sin alérgenos"
-    },
-    "primero4": {
-      "titulo": "Tortilla de Patatas",
-      "descripcion": "Tortilla española con cebolla.",
-      "alergias": "Huevos"
-    },
-    "primero5": {
-      "titulo": "Croquetas de Jamón",
-      "descripcion": "Croquetas caseras de jamón ibérico y bechamel.",
-      "alergias": "Lácteos, Gluten"
-    },
-    "primero6": {
-      "titulo": "Ensaladilla Rusa",
-      "descripcion": "Patata, zanahoria, huevo y mahonesa casera.",
-      "alergias": "Huevos, Pescado"
-    },
-  
-    "segundo1": {
-      "titulo": "Lomo de salmon a la plancha con wok de verduras salteadas, aceite de sesamo y teriyaki",
-      "descripcion": "Llom de salmo a la plantxa amb wok de verdures saltejades, oli de sesam i teriyaki",
-      "alergias": "Pescado"
-    },
-    "segundo2": {
-      "titulo": "Pollo al Ajillo",
-      "descripcion": "Pollo de corral con ajo y perejil, acompañado de patatas.",
-      "alergias": "Sin alérgenos"
-    },
-    "segundo3": {
-      "titulo": "Arroz Caldoso",
-      "descripcion": "Arroz caldoso con marisco fresco.",
-      "alergias": "Marisco, Crustáceos"
-    },
-    "segundo4": {
-      "titulo": "Escalopines de Ternera",
-      "descripcion": "Escalope fino de ternera con salsa de champiñones.",
-      "alergias": "Lácteos"
-    },
-    "segundo5": {
-      "titulo": "Pisto Manchego",
-      "descripcion": "Verduras de temporada al estilo manchego.",
-      "alergias": "Sin alérgenos"
-    },
-    "segundo6": {
-      "titulo": "Sepia a la Plancha",
-      "descripcion": "Sepia fresca a la plancha con alioli casero.",
-      "alergias": "Moluscos, Huevos"
-    },
-  
-    "postre1": {
-      "titulo": "Crema Catalana",
-      "descripcion": "Postre tradicional con azúcar caramelizado.",
-      "alergias": "Lácteos, Huevos"
-    },
-    "postre2": {
-      "titulo": "Tarta de Queso Casera",
-      "descripcion": "Suave tarta de queso con mermelada de frutos rojos.",
-      "alergias": "Lácteos"
-    },
-    "postre3": {
-      "titulo": "Flan de Huevo",
-      "descripcion": "Flan artesano con caramelo líquido.",
-      "alergias": "Huevos"
-    },
-    "postre4": {
-      "titulo": "Helado Artesano",
-      "descripcion": "Helado casero (preguntar sabores disponibles).",
-      "alergias": "Lácteos"
-    },
-    "postre5": {
-      "titulo": "Fruta de Temporada",
-      "descripcion": "Selección de fruta fresca de temporada.",
-      "alergias": "Sin alérgenos"
-    },
-  
-    "archivo_pdf": "https://ejemplo.com/menus/menu-daily-2025-06-06.pdf"
-  }
+  "timestamp": "2025-06-06T12:00:00Z",
+  "tipo": "daily",
+  "precio": "99",
+  "primero1": {
+    "titulo": "Ensalada de burrata con tomates de proximidad y pesto de albahaca",
+    "descripcion": "Amanida de burrata amb tomaquets de proximitat i pesto d'alfabrega",
+    "alergias": "Lácteos"
+  },
+  "primero2": {
+    "titulo": "Sopa de Pescado",
+    "descripcion": "Sopa tradicional con pescado fresco.",
+    "alergias": "Pescado"
+  },
+  "primero3": {
+    "titulo": "Gazpacho Andaluz",
+    "descripcion": "Sopa fría de tomate, pepino y pimiento.",
+    "alergias": "Sin alérgenos"
+  },
+  "primero4": {
+    "titulo": "Tortilla de Patatas",
+    "descripcion": "Tortilla española con cebolla.",
+    "alergias": "Huevos"
+  },
+  "primero5": {
+    "titulo": "Croquetas de Jamón",
+    "descripcion": "Croquetas caseras de jamón ibérico y bechamel.",
+    "alergias": "Lácteos, Gluten"
+  },
+  "primero6": {
+    "titulo": "Ensaladilla Rusa",
+    "descripcion": "Patata, zanahoria, huevo y mahonesa casera.",
+    "alergias": "Huevos, Pescado"
+  },
+  "segundo1": {
+    "titulo": "Lomo de salmon a la plancha con wok de verduras salteadas, aceite de sesamo y teriyaki",
+    "descripcion": "Llom de salmo a la plantxa amb wok de verdures saltejades, oli de sesam i teriyaki",
+    "alergias": "Pescado"
+  },
+  "segundo2": {
+    "titulo": "Pollo al Ajillo",
+    "descripcion": "Pollo de corral con ajo y perejil, acompañado de patatas.",
+    "alergias": "Sin alérgenos"
+  },
+  "segundo3": {
+    "titulo": "Arroz Caldoso",
+    "descripcion": "Arroz caldoso con marisco fresco.",
+    "alergias": "Marisco, Crustáceos"
+  },
+  "segundo4": {
+    "titulo": "Escalopines de Ternera",
+    "descripcion": "Escalope fino de ternera con salsa de champiñones.",
+    "alergias": "Lácteos"
+  },
+  "segundo5": {
+    "titulo": "Pisto Manchego",
+    "descripcion": "Verduras de temporada al estilo manchego.",
+    "alergias": "Sin alérgenos"
+  },
+  "segundo6": {
+    "titulo": "Sepia a la Plancha",
+    "descripcion": "Sepia fresca a la plancha con alioli casero.",
+    "alergias": "Moluscos, Huevos"
+  },
+  "postre1": {
+    "titulo": "Crema Catalana",
+    "descripcion": "Postre tradicional con azúcar caramelizado.",
+    "alergias": "Lácteos, Huevos"
+  },
+  "postre2": {
+    "titulo": "Tarta de Queso Casera",
+    "descripcion": "Suave tarta de queso con mermelada de frutos rojos.",
+    "alergias": "Lácteos"
+  },
+  "postre3": {
+    "titulo": "Flan de Huevo",
+    "descripcion": "Flan artesano con caramelo líquido.",
+    "alergias": "Huevos"
+  },
+  "postre4": {
+    "titulo": "Helado Artesano",
+    "descripcion": "Helado casero (preguntar sabores disponibles).",
+    "alergias": "Lácteos"
+  },
+  "postre5": {
+    "titulo": "Fruta de Temporada",
+    "descripcion": "Selección de fruta fresca de temporada.",
+    "alergias": "Sin alérgenos"
+  },
+  "archivo_pdf": "https://ejemplo.com/menus/menu-daily-2025-06-06.pdf",
+  "incluye": "Incluye pan y agua, copa de vino, refresco o cerveza"
+}

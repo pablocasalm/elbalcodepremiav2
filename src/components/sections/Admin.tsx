@@ -1,6 +1,7 @@
 // src/components/sections/Admin.tsx
 import React, { useState, useEffect, FormEvent } from 'react';
 import { useInView } from '../hooks/useInView';
+import Modal from '../ui/Modal';
 
 interface Plato {
   titulo: string;
@@ -12,27 +13,12 @@ interface MenuRawJSON {
   timestamp: string;
   tipo: string;
   precio: string;
-
-  primero1: Plato;
-  primero2: Plato;
-  primero3: Plato;
-  primero4: Plato;
-  primero5: Plato;
-  primero6: Plato;
-
-  segundo1: Plato;
-  segundo2: Plato;
-  segundo3: Plato;
-  segundo4: Plato;
-  segundo5: Plato;
-  segundo6: Plato;
-
-  postre1: Plato;
-  postre2: Plato;
-  postre3: Plato;
-  postre4: Plato;
-  postre5: Plato;
-
+  primero1: Plato; primero2: Plato; primero3: Plato;
+  primero4: Plato; primero5: Plato; primero6: Plato;
+  segundo1: Plato; segundo2: Plato; segundo3: Plato;
+  segundo4: Plato; segundo5: Plato; segundo6: Plato;
+  postre1: Plato; postre2: Plato; postre3: Plato;
+  postre4: Plato; postre5: Plato;
   archivo_pdf: string;
 }
 
@@ -45,31 +31,26 @@ type KeyPlato =
   | 'postre4'  | 'postre5';
 
 const Admin: React.FC = () => {
-  // 1) Token de administración
-  const ADMIN_TOKEN = import.meta.env.VITE_ADMIN_TOKEN;
-
-  // 2) Rutas a nuestras Netlify Functions
+  // Token y endpoints
+  const ADMIN_TOKEN    = import.meta.env.VITE_ADMIN_TOKEN;
   const WEBHOOK_DAILY   = '/.netlify/functions/update-daily';
   const WEBHOOK_WEEKEND = '/.netlify/functions/update-weekend';
 
-  // 3) Extraer token de URL
-  const raw = window.location.pathname; // "/admin=ABC123"
-  let tokenFromURL = '';
-  if (raw.startsWith('/admin=')) {
-    tokenFromURL = raw.split('/admin=')[1].split('/')[0];
-  }
-
-  // 4) Redirigir si el token no coincide
+  // Extraer token de URL y validar
+  const raw = window.location.pathname;
+  const tokenFromURL = raw.startsWith('/admin=')
+    ? raw.split('/admin=')[1].split('/')[0]
+    : '';
   useEffect(() => {
     if (tokenFromURL !== ADMIN_TOKEN) {
       window.location.href = '/';
     }
   }, []);
 
-  // 5) Control de pestañas
+  // Pestañas
   const [editTab, setEditTab] = useState<'daily' | 'weekend'>('daily');
 
-  // 6) Estados de carga y datos
+  // Estados de datos
   const [menuDaily, setMenuDaily] = useState<MenuRawJSON | null>(null);
   const [loadingDaily, setLoadingDaily] = useState(true);
   const [errorDaily, setErrorDaily] = useState(false);
@@ -78,41 +59,31 @@ const Admin: React.FC = () => {
   const [loadingWeekend, setLoadingWeekend] = useState(true);
   const [errorWeekend, setErrorWeekend] = useState(false);
 
-  // 7) Estados del formulario
+  // Formulario
   const [timestamp, setTimestamp] = useState('');
-  const [tipo, setTipo] = useState<'daily' | 'weekend'>('daily');
-  const [precio, setPrecio] = useState('');
-
+  const [tipo, setTipo]         = useState<'daily' | 'weekend'>('daily');
+  const [precio, setPrecio]     = useState('');
   const inicialPlato: Plato = { titulo: '', descripcion: '', alergias: '' };
   const [formPlatos, setFormPlatos] = useState<Record<KeyPlato, Plato>>({
-    primero1: { ...inicialPlato },
-    primero2: { ...inicialPlato },
-    primero3: { ...inicialPlato },
-    primero4: { ...inicialPlato },
-    primero5: { ...inicialPlato },
-    primero6: { ...inicialPlato },
-    segundo1: { ...inicialPlato },
-    segundo2: { ...inicialPlato },
-    segundo3: { ...inicialPlato },
-    segundo4: { ...inicialPlato },
-    segundo5: { ...inicialPlato },
-    segundo6: { ...inicialPlato },
-    postre1: { ...inicialPlato },
-    postre2: { ...inicialPlato },
-    postre3: { ...inicialPlato },
-    postre4: { ...inicialPlato },
-    postre5: { ...inicialPlato },
+    primero1: {...inicialPlato}, primero2: {...inicialPlato}, primero3: {...inicialPlato},
+    primero4: {...inicialPlato}, primero5: {...inicialPlato}, primero6: {...inicialPlato},
+    segundo1: {...inicialPlato}, segundo2: {...inicialPlato}, segundo3: {...inicialPlato},
+    segundo4: {...inicialPlato}, segundo5: {...inicialPlato}, segundo6: {...inicialPlato},
+    postre1: {...inicialPlato},  postre2: {...inicialPlato},  postre3: {...inicialPlato},
+    postre4: {...inicialPlato},  postre5: {...inicialPlato},
   });
-
   const [archivoPdf, setArchivoPdf] = useState('');
 
-  // 8) Carga menú diario
+  // Modal de resultado
+  const [modalOpen, setModalOpen]       = useState(false);
+  const [modalSuccess, setModalSuccess] = useState(true);
+  const [modalTitle, setModalTitle]     = useState('');
+  const [modalMsg, setModalMsg]         = useState('');
+
+  // Carga de menús
   useEffect(() => {
     fetch('/menu-daily.json?ts=' + Date.now())
-      .then(res => {
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        return res.json();
-      })
+      .then(res => { if (!res.ok) throw new Error(); return res.json(); })
       .then((json: MenuRawJSON) => {
         setMenuDaily(json);
         if (editTab === 'daily') {
@@ -120,43 +91,23 @@ const Admin: React.FC = () => {
           setTipo('daily');
           setPrecio(json.precio);
           setFormPlatos({
-            primero1: json.primero1,
-            primero2: json.primero2,
-            primero3: json.primero3,
-            primero4: json.primero4,
-            primero5: json.primero5,
-            primero6: json.primero6,
-            segundo1: json.segundo1,
-            segundo2: json.segundo2,
-            segundo3: json.segundo3,
-            segundo4: json.segundo4,
-            segundo5: json.segundo5,
-            segundo6: json.segundo6,
-            postre1: json.postre1,
-            postre2: json.postre2,
-            postre3: json.postre3,
-            postre4: json.postre4,
-            postre5: json.postre5,
+            primero1: json.primero1, primero2: json.primero2, primero3: json.primero3,
+            primero4: json.primero4, primero5: json.primero5, primero6: json.primero6,
+            segundo1: json.segundo1, segundo2: json.segundo2, segundo3: json.segundo3,
+            segundo4: json.segundo4, segundo5: json.segundo5, segundo6: json.segundo6,
+            postre1: json.postre1,  postre2: json.postre2,  postre3: json.postre3,
+            postre4: json.postre4,  postre5: json.postre5,
           });
           setArchivoPdf(json.archivo_pdf);
         }
       })
-      .catch(err => {
-        console.error('Error al leer menu-daily.json:', err);
-        setErrorDaily(true);
-      })
-      .finally(() => {
-        setLoadingDaily(false);
-      });
+      .catch(() => setErrorDaily(true))
+      .finally(() => setLoadingDaily(false));
   }, [editTab]);
 
-  // 9) Carga menú fin de semana
   useEffect(() => {
     fetch('/menu-weekend.json?ts=' + Date.now())
-      .then(res => {
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        return res.json();
-      })
+      .then(res => { if (!res.ok) throw new Error(); return res.json(); })
       .then((json: MenuRawJSON) => {
         setMenuWeekend(json);
         if (editTab === 'weekend') {
@@ -164,105 +115,66 @@ const Admin: React.FC = () => {
           setTipo('weekend');
           setPrecio(json.precio);
           setFormPlatos({
-            primero1: json.primero1,
-            primero2: json.primero2,
-            primero3: json.primero3,
-            primero4: json.primero4,
-            primero5: json.primero5,
-            primero6: json.primero6,
-            segundo1: json.segundo1,
-            segundo2: json.segundo2,
-            segundo3: json.segundo3,
-            segundo4: json.segundo4,
-            segundo5: json.segundo5,
-            segundo6: json.segundo6,
-            postre1: json.postre1,
-            postre2: json.postre2,
-            postre3: json.postre3,
-            postre4: json.postre4,
-            postre5: json.postre5,
+            primero1: json.primero1, primero2: json.primero2, primero3: json.primero3,
+            primero4: json.primero4, primero5: json.primero5, primero6: json.primero6,
+            segundo1: json.segundo1, segundo2: json.segundo2, segundo3: json.segundo3,
+            segundo4: json.segundo4, segundo5: json.segundo5, segundo6: json.segundo6,
+            postre1: json.postre1,  postre2: json.postre2,  postre3: json.postre3,
+            postre4: json.postre4,  postre5: json.postre5,
           });
           setArchivoPdf(json.archivo_pdf);
         }
       })
-      .catch(err => {
-        console.error('Error al leer menu-weekend.json:', err);
-        setErrorWeekend(true);
-      })
-      .finally(() => {
-        setLoadingWeekend(false);
-      });
+      .catch(() => setErrorWeekend(true))
+      .finally(() => setLoadingWeekend(false));
   }, [editTab]);
 
-  // 10) Manejar cambios en los platos
-  const handlePlatoChange = (
-    key: KeyPlato,
-    field: keyof Plato,
-    value: string
-  ) => {
+  const handlePlatoChange = (key: KeyPlato, field: keyof Plato, value: string) => {
     setFormPlatos(prev => ({
       ...prev,
-      [key]: {
-        ...prev[key],
-        [field]: value,
-      },
+      [key]: { ...prev[key], [field]: value }
     }));
   };
 
-  // 11) Enviar formulario
-  const handleSubmit = (e: FormEvent) => {
+  // Envío del formulario
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const payload: MenuRawJSON = {
-      timestamp,
-      tipo,
-      precio,
-      ...formPlatos,
-      archivo_pdf: archivoPdf,
-    };
-
+    const payload: MenuRawJSON = { timestamp, tipo, precio, ...formPlatos, archivo_pdf: archivoPdf };
     const webhook = editTab === 'daily' ? WEBHOOK_DAILY : WEBHOOK_WEEKEND;
 
-    fetch(webhook, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    })
-      .then(async res => {
-        const text = await res.text();
-        if (!res.ok) {
-          console.error('Error en función:', res.status, text);
-          return alert(
-            `Error ${res.status} al actualizar el menú ${
-              editTab === 'daily' ? 'Diario' : 'Fin de Semana'
-            }:\n${text}`
-          );
-        }
-        alert(
-          `Menú ${
-            editTab === 'daily' ? 'Diario' : 'Fin de Semana'
-          } actualizado correctamente.\nNetlify redeplegará en breve.`
-        );
-      })
-      .catch(err => {
-        console.error('Error en la petición a la función:', err);
-        alert(
-          `Hubo un error inesperado al conectar con la función.\n` +
-          `Revisa la consola para más detalles.`
-        );
+    try {
+      const res = await fetch(webhook, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
       });
+      if (!res.ok) throw res;
+      setModalSuccess(true);
+      setModalTitle('¡Operación satisfactoria!');
+      setModalMsg(
+        `El menú ${editTab === 'daily' ? 'Diario' : 'Fin de Semana'} ` +
+        `se ha actualizado correctamente. Podrás verlo en unos 30 segundos.`
+      );
+    } catch {
+      setModalSuccess(false);
+      setModalTitle('Error en la actualización');
+      setModalMsg(
+        `No hemos podido actualizar el menú ${editTab === 'daily' ? 'Diario' : 'Fin de Semana'}.`
+      );
+    } finally {
+      setModalOpen(true);
+    }
   };
 
-  // 12) Indicadores de carga / error
-  if ((editTab === 'daily' && loadingDaily) ||
-      (editTab === 'weekend' && loadingWeekend)) {
+  // Estados de carga / error iniciales
+  if ((editTab === 'daily' && loadingDaily) || (editTab === 'weekend' && loadingWeekend)) {
     return (
       <div className="flex items-center justify-center h-screen">
         <p className="text-gray-500">Cargando datos del menú…</p>
       </div>
     );
   }
-  if ((editTab === 'daily' && errorDaily) ||
-      (editTab === 'weekend' && errorWeekend)) {
+  if ((editTab === 'daily' && errorDaily) || (editTab === 'weekend' && errorWeekend)) {
     return (
       <div className="flex items-center justify-center h-screen">
         <p className="text-red-500">

@@ -3,89 +3,89 @@
   "tipo": "weekend",
   "precio": "26.95",
   "primero1": {
-    "titulo": "Mariscada",
-    "descripcion": "Selección de marisco más fresco local, incluyendo gambas, ostras, mejillones y almejas.",
-    "alergias": "Crustáceos, Moluscos"
+    "titulo": "Tartar de tomate con aguacate, anchoas y balsamico de Módena.",
+    "descripcion": "Tàrtar de tomàquet amb alvocat, anxoves i balsàmic de Mòdena.",
+    "alergias": "Sin Gluten"
   },
   "primero2": {
-    "titulo": "Ensalada de Gambas",
-    "descripcion": "Gambas frescas sobre cama de lechugas y cítricos.",
-    "alergias": "Crustáceos"
+    "titulo": "Gambitas rojas a la sal con mayonesa de wasabi a banda. ",
+    "descripcion": "Gambetes vermelles a la sal amb maionesa de wasabi a banda.",
+    "alergias": "Sin Gluten"
   },
   "primero3": {
-    "titulo": "Paté de Salmón",
-    "descripcion": "Paté casero de salmón con tostadas.",
-    "alergias": "Pescado, Lácteos"
+    "titulo": "Fagotinis rellenos de gorgonzola y nueces a los 4 quesos con pera caramelizada ",
+    "descripcion": "Fagotinis farcits de gorgonzola i nous amb salsa de quatre formatges i pera caramel·litzada.",
+    "alergias": ""
   },
   "primero4": {
-    "titulo": "Vieiras a la Plancha",
-    "descripcion": "Vieiras frescas con reducción de vino blanco.",
-    "alergias": "Moluscos"
+    "titulo": "Ensalada de calabacín con melocotón salteado en romero y lavanda, tomates secos, parmesano y vinagreta cítrica.",
+    "descripcion": "Amanida de carbassó amb préssec saltat amb romaní i lavanda, tomàquets secs, parmesà i vinagreta cítrica.\n",
+    "alergias": "Sin Gluten"
   },
   "primero5": {
-    "titulo": "Foie a la Plancha",
-    "descripcion": "Foie fresco con manzana caramelizada.",
-    "alergias": "Lácteos"
+    "titulo": "",
+    "descripcion": "",
+    "alergias": ""
   },
   "primero6": {
-    "titulo": "Sopa de Mariscos",
-    "descripcion": "Sopa ligera con una variedad de mariscos y toques de jengibre.",
-    "alergias": "Crustáceos, Moluscos"
+    "titulo": "",
+    "descripcion": "",
+    "alergias": ""
   },
   "segundo1": {
-    "titulo": "Risotto de Setas",
-    "descripcion": "Risotto cremoso con setas silvestres y Parmesano envejecido.",
-    "alergias": "Lácteos, Gluten"
+    "titulo": "Cordero al horno con patata panadera y salsa demi glacé.",
+    "descripcion": "Xai al forn amb patata panadera i salsa demi-glace.",
+    "alergias": ""
   },
   "segundo2": {
-    "titulo": "Cordero Asado",
-    "descripcion": "Cordero local asado lentamente con hierbas provenzales.",
-    "alergias": "Sin alérgenos"
+    "titulo": "Arroz de confit de pato con calabaza asada y frambuesas liofilizadas.",
+    "descripcion": "Arròs de confit d’ànec amb carbassa rostida i gerds liofilitzats.",
+    "alergias": "Sin Gluten"
   },
   "segundo3": {
-    "titulo": "Solomillo de Buey",
-    "descripcion": "Solomillo jugoso con reducción de Oporto.",
-    "alergias": "Sin alérgenos"
+    "titulo": "Entrecot de ternera a la brasa con patatas fritas y padrones.",
+    "descripcion": "Entrecot de vedella a la brasa amb patates fregides i pebrots del padró.",
+    "alergias": ""
   },
   "segundo4": {
-    "titulo": "Lubina al Horno",
-    "descripcion": "Lubina salvaje al horno con patatas panadera.",
-    "alergias": "Pescado"
+    "titulo": "Lomo de corvina con cremoso de chirivía, chalotas glaseadas y espárragos trigueros.",
+    "descripcion": "Llom de corvina amb cremós de xirivia, xalotes glacejades i espàrrecs verds.",
+    "alergias": "Sin Gluten"
   },
   "segundo5": {
-    "titulo": "Carrillera de Ternera",
-    "descripcion": "Carrillera guisada al vino tinto con puré de patata.",
-    "alergias": "Sin alérgenos"
+    "titulo": "",
+    "descripcion": "",
+    "alergias": ""
   },
   "segundo6": {
-    "titulo": "Entrecot a la Brasa",
-    "descripcion": "Entrecot de vacuno a la brasa con aceite de romero.",
-    "alergias": "Sin alérgenos"
+    "titulo": "",
+    "descripcion": "",
+    "alergias": ""
   },
   "postre1": {
-    "titulo": "Tarta de Queso Casera",
-    "descripcion": "Suave tarta de queso con mermelada de frutos rojos.",
-    "alergias": "Lácteos"
+    "titulo": "Cheescake con coulise de frutos rojos.",
+    "descripcion": "Pastís de formatge amb coulis de fruits vermells.\n",
+    "alergias": ""
   },
   "postre2": {
-    "titulo": "Brownie de Chocolate",
-    "descripcion": "Brownie caliente con helado de vainilla.",
-    "alergias": "Lácteos, Frutos secos"
+    "titulo": "Coulant de chocolate con helado de canela.",
+    "descripcion": "Coulant de xocolata amb gelat de canyella.",
+    "alergias": ""
   },
   "postre3": {
-    "titulo": "Coulant de Chocolate",
-    "descripcion": "Coulant negro con corazón líquido y frambuesas.",
-    "alergias": "Lácteos, Gluten"
+    "titulo": "Sorbete de mojito con daditos de piña",
+    "descripcion": "Sorbet de mojito amb daus de pinya.",
+    "alergias": "Sin Gluten"
   },
   "postre4": {
-    "titulo": "Macedonia de Frutas",
-    "descripcion": "Selección de frutas frescas de temporada con menta.",
-    "alergias": "Sin alérgenos"
+    "titulo": "Coca de Llaneras con helado de vainilla.",
+    "descripcion": "Coca de Llavaneres amb gelat de vainilla.",
+    "alergias": ""
   },
   "postre5": {
-    "titulo": "Helado Artesano",
-    "descripcion": "Helado casero (preguntar sabores disponibles).",
-    "alergias": "Lácteos"
+    "titulo": "",
+    "descripcion": "",
+    "alergias": ""
   },
   "archivo_pdf": "https://ejemplo.com/menus/menu-weekend-2025-06-07.pdf",
   "incluye": "Incluye pan y agua"

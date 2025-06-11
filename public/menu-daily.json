@@ -19,73 +19,73 @@
   },
   "primero4": {
     "titulo": "Ensalada de queso de cabra con vinagreta de frutos secos y balsamico de modena (+1€)",
-    "descripcion": "Tortilla española con cebolla.",
-    "alergias": "Huevos"
+    "descripcion": "Amanida de formatge de cabra amb vinagreta de fruits secs i balsàmic de Mòdena (+1 €)",
+    "alergias": ""
   },
   "primero5": {
-    "titulo": "Croquetas de Jamón",
-    "descripcion": "Croquetas caseras de jamón ibérico y bechamel.",
-    "alergias": "Lácteos, Gluten"
+    "titulo": "Trencadisa de huevos camperos y jamón ibérico (+2€)",
+    "descripcion": "Trencadissa d’ous de pagès amb pernil ibèric (+2 €)\n",
+    "alergias": ""
   },
   "primero6": {
-    "titulo": "Ensaladilla Rusa",
-    "descripcion": "Patata, zanahoria, huevo y mahonesa casera.",
-    "alergias": "Huevos, Pescado"
+    "titulo": "Ensalada griega de tomate, pepino, cebolla roja, aceitunas de Kalamata, vinagreta  de limón y queso Feta.",
+    "descripcion": "Amanida grega de tomàquet, cogombre, ceba vermella, olives de Kalamata, vinagreta de llimona i formatge feta.\n",
+    "alergias": "Sin Gluten"
   },
   "segundo1": {
-    "titulo": "Lomo de salmon a la plancha con wok de verduras salteadas, aceite de sesamo y teriyaki",
-    "descripcion": "Llom de salmo a la plantxa amb wok de verdures saltejades, oli de sesam i teriyaki",
-    "alergias": "Pescado"
+    "titulo": "Salmon a la plancha con wok de verduras, teriyaki I sesamo.",
+    "descripcion": "Salmó a la planxa amb wok de verdures, teriyaki i sèsam.",
+    "alergias": ""
   },
   "segundo2": {
-    "titulo": "Pollo al Ajillo",
-    "descripcion": "Pollo de corral con ajo y perejil, acompañado de patatas.",
-    "alergias": "Sin alérgenos"
+    "titulo": "Lacon a la gallega con All i Oli de pimentón. ",
+    "descripcion": "Lacó a la gallega amb allioli de pebre vermell.",
+    "alergias": ""
   },
   "segundo3": {
-    "titulo": "Arroz Caldoso",
-    "descripcion": "Arroz caldoso con marisco fresco.",
-    "alergias": "Marisco, Crustáceos"
+    "titulo": "Hamburguesa de ternera 100% con cebolla caramelizada y queso cheddar y patatas fritas.",
+    "descripcion": "Hamburguesa de vedella 100% amb ceba caramel·litzada, formatge cheddar i patates fregides.",
+    "alergias": ""
   },
   "segundo4": {
-    "titulo": "Escalopines de Ternera",
-    "descripcion": "Escalope fino de ternera con salsa de champiñones.",
-    "alergias": "Lácteos"
+    "titulo": "Entrecot a la brasa con patatas fritas de boniato y pimientos del Padrón. (+4€)",
+    "descripcion": "Entrecot a la brasa amb patates fregides de moniato i pebrots del padró (+4€)",
+    "alergias": ""
   },
   "segundo5": {
-    "titulo": "Pisto Manchego",
-    "descripcion": "Verduras de temporada al estilo manchego.",
-    "alergias": "Sin alérgenos"
+    "titulo": "Roastbeef de Ternera con mayonesa de trufa, parmesano, alcaparras y pistachos.(+2€) ",
+    "descripcion": "Roast beef de vedella amb maionesa de tòfona, parmesà, tàperes i festucs (+2 €)",
+    "alergias": ""
   },
   "segundo6": {
-    "titulo": "Sepia a la Plancha",
-    "descripcion": "Sepia fresca a la plancha con alioli casero.",
-    "alergias": "Moluscos, Huevos"
+    "titulo": "Arroz al estilo del chef. ",
+    "descripcion": "Arròs a l’estil del xef.",
+    "alergias": ""
   },
   "postre1": {
-    "titulo": "Crema Catalana",
-    "descripcion": "Postre tradicional con azúcar caramelizado.",
-    "alergias": "Lácteos, Huevos"
+    "titulo": "Mató con Miel y nueces.",
+    "descripcion": "Mató amb mel i nous.",
+    "alergias": "Sin Gluten"
   },
   "postre2": {
-    "titulo": "Tarta de Queso Casera",
-    "descripcion": "Suave tarta de queso con mermelada de frutos rojos.",
-    "alergias": "Lácteos"
+    "titulo": "Sorbete de limón",
+    "descripcion": "Sorbet de Llimona.",
+    "alergias": "Sin Gluten"
   },
   "postre3": {
-    "titulo": "Flan de Huevo",
-    "descripcion": "Flan artesano con caramelo líquido.",
-    "alergias": "Huevos"
+    "titulo": "Brownie con helado de vainilla.",
+    "descripcion": "Brownie lamb gelato de vainilla. ",
+    "alergias": ""
   },
   "postre4": {
-    "titulo": "Helado Artesano",
-    "descripcion": "Helado casero (preguntar sabores disponibles).",
-    "alergias": "Lácteos"
+    "titulo": "",
+    "descripcion": "",
+    "alergias": ""
   },
   "postre5": {
-    "titulo": "Fruta de Temporada",
-    "descripcion": "Selección de fruta fresca de temporada.",
-    "alergias": "Sin alérgenos"
+    "titulo": "",
+    "descripcion": "",
+    "alergias": ""
   },
   "archivo_pdf": "https://ejemplo.com/menus/menu-daily-2025-06-06.pdf",
   "incluye": "Incluye pan y agua, copa de vino, refresco o cerveza"

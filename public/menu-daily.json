@@ -3,22 +3,22 @@
   "tipo": "daily",
   "precio": "23",
   "primero1": {
-    "titulo": "Ensalada de burrata con tomates de proximidad y pesto de albahaca",
-    "descripcion": "Amanida de burrata amb tomaquets de proximitat i pesto d'alfabrega",
-    "alergias": "Lácteos"
+    "titulo": "Vichisois fria de calabacín y pera con virutas de jamón iberico.",
+    "descripcion": "Vichyssoise freda de carbassó i pera amb encenalls de pernil ibèric.",
+    "alergias": "Sin Gluten"
   },
   "primero2": {
-    "titulo": "Sopa de Pescado",
-    "descripcion": "Sopa tradicional con pescado fresco.",
-    "alergias": "Pescado"
+    "titulo": "Canelon de carrillera de ternera con bechamel de berenjena ahumada (+2€)",
+    "descripcion": "Caneló de galta de vedella amb beixamel d’albergínia fumada (+2 €)",
+    "alergias": ""
   },
   "primero3": {
-    "titulo": "Gazpacho Andaluz",
-    "descripcion": "Sopa fría de tomate, pepino y pimiento.",
-    "alergias": "Sin alérgenos"
+    "titulo": "Rigatoni a los 4 quesos con nueces y manzana caramelizada.",
+    "descripcion": "Rigatoni als quatre formatges amb nous i poma caramel·litzada.\n",
+    "alergias": ""
   },
   "primero4": {
-    "titulo": "Tortilla de Patatas",
+    "titulo": "Ensalada de queso de cabra con vinagreta de frutos secos y balsamico de modena (+1€)",
     "descripcion": "Tortilla española con cebolla.",
     "alergias": "Huevos"
   },

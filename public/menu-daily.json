@@ -3,83 +3,83 @@
   "tipo": "daily",
   "precio": "17.50",
   "primero1": {
-    "titulo": "Vichisois fria de calabacín y pera con virutas de jamón iberico.",
-    "descripcion": "Vichyssoise freda de carbassó i pera amb encenalls de pernil ibèric.",
+    "titulo": "Mejillones de roca del Delta al vapor, con mayonesa a banda",
+    "descripcion": "Musclos de roca del Delta al vapor, amb maionesa a banda",
     "alergias": "Sin Gluten"
   },
   "primero2": {
-    "titulo": "Canelon de carrillera de ternera con bechamel de berenjena ahumada (+2€)",
-    "descripcion": "Caneló de galta de vedella amb beixamel d’albergínia fumada (+2 €)",
-    "alergias": ""
+    "titulo": "Vichissoise fría de zanahoria y naranja con pistachos y mascarpone",
+    "descripcion": "Vichissoise freda de pastanaga i taronja amb festucs i mascarpone",
+    "alergias": "Sin Gluten"
   },
   "primero3": {
-    "titulo": "Rigatoni a los 4 quesos con nueces y manzana caramelizada.",
-    "descripcion": "Rigatoni als quatre formatges amb nous i poma caramel·litzada.\n",
-    "alergias": ""
+    "titulo": "Parmentier de patata con butifarra negra y manzana",
+    "descripcion": "Parmentier de patata amb botifarra negra i poma",
+    "alergias": "Sin Gluten"
   },
   "primero4": {
-    "titulo": "Ensalada de queso de cabra con vinagreta de frutos secos y balsamico de modena (+1€)",
-    "descripcion": "Amanida de formatge de cabra amb vinagreta de fruits secs i balsàmic de Mòdena (+1 €)",
+    "titulo": "Fagotinis rellenos de quesos y pera con salsa 4 quesos y nueces (+2€)",
+    "descripcion": "Fagotinis farcits de formatges i pera amb salsa 4 formatges i nous (+2€)",
     "alergias": ""
   },
   "primero5": {
-    "titulo": "Trencadisa de huevos camperos y jamón ibérico (+2€)",
-    "descripcion": "Trencadissa d’ous de pagès amb pernil ibèric (+2 €)\n",
-    "alergias": ""
-  },
-  "primero6": {
-    "titulo": "Ensalada griega de tomate, pepino, cebolla roja, aceitunas de Kalamata, vinagreta  de limón y queso Feta.",
-    "descripcion": "Amanida grega de tomàquet, cogombre, ceba vermella, olives de Kalamata, vinagreta de llimona i formatge feta.\n",
+    "titulo": "Gambitas rojas a la sal con mayonesa de wasabi a banda (+1,5€)",
+    "descripcion": "Gambetes vermelles a la sal amb maionesa de wasabi a banda (+1,50€)",
     "alergias": "Sin Gluten"
   },
-  "segundo1": {
-    "titulo": "Salmon a la plancha con wok de verduras, teriyaki I sesamo.",
-    "descripcion": "Salmó a la planxa amb wok de verdures, teriyaki i sèsam.",
+  "primero6": {
+    "titulo": "",
+    "descripcion": "",
     "alergias": ""
   },
+  "segundo1": {
+    "titulo": "Dorada a la donostiarra con wok de calabacín, cebolla morada y sésamo negro",
+    "descripcion": "Orada a la donostiarra amb wok de carbassó, ceba morada i sèsam negre",
+    "alergias": "Sin Gluten"
+  },
   "segundo2": {
-    "titulo": "Lacon a la gallega con All i Oli de pimentón. ",
-    "descripcion": "Lacó a la gallega amb allioli de pebre vermell.",
+    "titulo": "Churrasco a la brasa con patatas fritas i all i oli",
+    "descripcion": "Xurrasc a la brasa amb patates fregides i all i oli",
     "alergias": ""
   },
   "segundo3": {
-    "titulo": "Hamburguesa de ternera 100% con cebolla caramelizada y queso cheddar y patatas fritas.",
-    "descripcion": "Hamburguesa de vedella 100% amb ceba caramel·litzada, formatge cheddar i patates fregides.",
-    "alergias": ""
+    "titulo": "Contramuslo de pollo al curry con arroz basmati",
+    "descripcion": "Contracuixa de pollastre al curri amb arròs basmati",
+    "alergias": "Sin Gluten"
   },
   "segundo4": {
-    "titulo": "Entrecot a la brasa con patatas fritas de boniato y pimientos del Padrón. (+4€)",
-    "descripcion": "Entrecot a la brasa amb patates fregides de moniato i pebrots del padró (+4€)",
+    "titulo": "Cordero al horno con patata panadera y salsa demi glacé (+3€)",
+    "descripcion": "Xai al forn amb patata fornera i salsa demi glacé (+3€)",
     "alergias": ""
   },
   "segundo5": {
-    "titulo": "Roastbeef de Ternera con mayonesa de trufa, parmesano, alcaparras y pistachos.(+2€) ",
-    "descripcion": "Roast beef de vedella amb maionesa de tòfona, parmesà, tàperes i festucs (+2 €)",
+    "titulo": "Entrecot de ternera a la brasa con fritas de boniato y padrons (+4€)",
+    "descripcion": "Entrecot de vedella a la brasa amb fregides de moniato i padrons (+4€)",
     "alergias": ""
   },
   "segundo6": {
-    "titulo": "Arroz al estilo del chef. ",
-    "descripcion": "Arròs a l’estil del xef.",
+    "titulo": "Confit de pato con cremoso de chirivías, espárragos trigueros y frambuesas liofilizadas (+3€)",
+    "descripcion": "Confit d’ànec amb cremós de xirivies, espàrrecs de marge i gerds liofilitzades (+3€)",
     "alergias": ""
   },
   "postre1": {
-    "titulo": "Mató con Miel y nueces.",
-    "descripcion": "Mató amb mel i nous.",
-    "alergias": "Sin Gluten"
+    "titulo": "Cheesecake con coulise de frutos rojos",
+    "descripcion": "Cheesecake amb coulise de fruits vermells",
+    "alergias": ""
   },
   "postre2": {
-    "titulo": "Sorbete de limón",
-    "descripcion": "Sorbet de Llimona.",
+    "titulo": "Yogur griego con miel y nueces",
+    "descripcion": "Iogurt Grec amb mel i nous",
     "alergias": "Sin Gluten"
   },
   "postre3": {
-    "titulo": "Brownie con helado de vainilla.",
-    "descripcion": "Brownie lamb gelato de vainilla. ",
+    "titulo": "Cremoso de dulce de leche con crumble de lotus",
+    "descripcion": "Cremós de dolç de llet amb crumble de lotus",
     "alergias": ""
   },
   "postre4": {
-    "titulo": "",
-    "descripcion": "",
+    "titulo": "Coulant de chocolate con helado de vainilla (+2€)",
+    "descripcion": "Coulant de xocolata amb gelat de vainilla (+2€)",
     "alergias": ""
   },
   "postre5": {

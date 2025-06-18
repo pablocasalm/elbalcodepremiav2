@@ -1,0 +1,105 @@
+{
+    "timestamp": "2025-06-23T20:00:00Z",
+    "tipo": "Special",
+    "precio": "45",
+    "primero1": {
+      "titulo": "Jamón ibérico y pan de coca con tomate",
+      "descripcion": "Pernil ibèric i pa de coca amb tomàquet.",
+      "alergias": ""
+    },
+    "primero2": {
+      "titulo": "Nuestras patatas bravas",
+      "descripcion": "Les nostres patates braves",
+      "alergias": ""
+    },
+    "primero3": {
+      "titulo": "Croquetas de gorgonzola y nueces y de rostit",
+      "descripcion": "Croquetes de gorgonzola i nous i de rostit.",
+      "alergias": ""
+    },
+    "primero4": {
+      "titulo": "Calamares a la andaluza con mayonesa de soja",
+      "descripcion": "Calamars a la andalusa amb maionesa de soja",
+      "alergias": ""
+    },
+    "primero5": {
+      "titulo": "Mejillones del delta al vapor con mayonesa a banda",
+      "descripcion": "Musclos del delta al vapor amb maionesa \"a banda\"",
+      "alergias": ""
+    },
+    "primero6": {
+      "titulo": "",
+      "descripcion": "",
+      "alergias": ""
+    },
+  
+    "segundo1": {
+      "titulo": "Meloso de ternera con parmentier trufada",
+      "descripcion": "Melos de vedella amb parmentier trufada.",
+      "alergias": ""
+    },
+    "segundo2": {
+      "titulo": "Lomo de salmón a la plancha con wok de verduras salteadas, aceite de sésamo y teriyaki",
+      "descripcion": "Llom de salmó a la planxa amb wok de verdures saltejades, oli de sèsam i teriyaki.",
+      "alergias": ""
+    },
+    "segundo3": {
+      "titulo": "Cordero al horno con patata panadera y salsa demi glace",
+      "descripcion": "Xai al forn amb patata panadera i salsa demi glace",
+      "alergias": ""
+    },
+    "segundo4": {
+      "titulo": "",
+      "descripcion": "",
+      "alergias": ""
+    },
+    "segundo5": {
+      "titulo": "",
+      "descripcion": "",
+      "alergias": ""
+    },
+    "segundo6": {
+      "titulo": "",
+      "descripcion": "",
+      "alergias": ""
+    },
+  
+    "postre1": {
+      "titulo": "Espuma de crema catalana",
+      "descripcion": "Escuma de crema catalana",
+      "alergias": ""
+    },
+    "postre2": {
+      "titulo": "Coulant de chocolate con helado de vainilla",
+      "descripcion": "Coulant de xocolata amb gelat de vainilla",
+      "alergias": ""
+    },
+    "postre3": {
+      "titulo": "",
+      "descripcion": "",
+      "alergias": ""
+    },
+    "postre4": {
+      "titulo": "",
+      "descripcion": "",
+      "alergias": ""
+    },
+    "postre5": {
+      "titulo": "",
+      "descripcion": "",
+      "alergias": ""
+    },
+    "vinoblanco": {
+        "titulo": "Blanco",
+        "descripcion": "Campillo D.O. Rioja. Variedad: Verdejo",
+        "alergias": ""
+    },
+    "vinotinto": {
+        "titulo": "Tinto",
+        "descripcion": "Nomes D.O. Empordà. Variedad: Garantxa. Bodega: Perelada",
+        "alergias": ""
+    },
+  
+    "archivo_pdf": "",
+    "incluye": "Pan y agua, refresco o vino (1 botella cada 4 pax)"
+  }

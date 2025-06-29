@@ -3,29 +3,29 @@
   "tipo": "daily",
   "precio": "17.50",
   "primero1": {
-    "titulo": "Mejillones de roca del Delta al vapor, con mayonesa a banda",
-    "descripcion": "Musclos de roca del Delta al vapor, amb maionesa a banda",
+    "titulo": "Sopa de sandía con fresas y arándanos ]*",
+    "descripcion": "Sopa de síndria amb maduixes i nabius *",
     "alergias": "Sin Gluten"
   },
   "primero2": {
-    "titulo": "Vichissoise fría de zanahoria y naranja con pistachos y mascarpone",
-    "descripcion": "Vichissoise freda de pastanaga i taronja amb festucs i mascarpone",
+    "titulo": "Ensalada de melocotón , mozzarella y nueces. *",
+    "descripcion": "Amanida de préssec, mozzarella i nous. *",
     "alergias": "Sin Gluten"
   },
   "primero3": {
-    "titulo": "Parmentier de patata con butifarra negra y manzana",
-    "descripcion": "Parmentier de patata amb botifarra negra i poma",
-    "alergias": "Sin Gluten"
-  },
-  "primero4": {
-    "titulo": "Fagotinis rellenos de quesos y pera con salsa 4 quesos y nueces (+2€)",
-    "descripcion": "Fagotinis farcits de formatges i pera amb salsa 4 formatges i nous (+2€)",
+    "titulo": "Trencadisa de panceta y champiñones ",
+    "descripcion": "Trencadisa de panceta y champiñones ",
     "alergias": ""
   },
+  "primero4": {
+    "titulo": "Carpaccio de ternera con parmesano y rúcula (+2€)*",
+    "descripcion": "Carpaccio de vedella amb parmesà i ruca (+2€)*",
+    "alergias": "Sin Gluten "
+  },
   "primero5": {
-    "titulo": "Gambitas rojas a la sal con mayonesa de wasabi a banda (+1,5€)",
-    "descripcion": "Gambetes vermelles a la sal amb maionesa de wasabi a banda (+1,50€)",
-    "alergias": "Sin Gluten"
+    "titulo": "Caneló XL amb beixamel trufada. (+1,50€)",
+    "descripcion": "Canelón XL con bechamel trufada . (+1,50€)",
+    "alergias": ""
   },
   "primero6": {
     "titulo": "",
@@ -33,53 +33,53 @@
     "alergias": ""
   },
   "segundo1": {
-    "titulo": "Dorada a la donostiarra con wok de calabacín, cebolla morada y sésamo negro",
-    "descripcion": "Orada a la donostiarra amb wok de carbassó, ceba morada i sèsam negre",
-    "alergias": "Sin Gluten"
-  },
-  "segundo2": {
-    "titulo": "Churrasco a la brasa con patatas fritas i all i oli",
-    "descripcion": "Xurrasc a la brasa amb patates fregides i all i oli",
+    "titulo": "Lubina al horno con cremoso de berenjena . ",
+    "descripcion": "Lubina al forn amb cremós d'albergínia. ",
     "alergias": ""
   },
-  "segundo3": {
-    "titulo": "Contramuslo de pollo al curry con arroz basmati",
-    "descripcion": "Contracuixa de pollastre al curri amb arròs basmati",
+  "segundo2": {
+    "titulo": "Roast beef con zanahoria asada*",
+    "descripcion": "Roast beef amb pastanaga rostida *",
     "alergias": "Sin Gluten"
   },
+  "segundo3": {
+    "titulo": "Butifarra con secas encebolladas ",
+    "descripcion": "Botifarra amb seques cebades \n",
+    "alergias": ""
+  },
   "segundo4": {
-    "titulo": "Cordero al horno con patata panadera y salsa demi glacé (+3€)",
-    "descripcion": "Xai al forn amb patata fornera i salsa demi glacé (+3€)",
+    "titulo": "Cordero a la brasa con fritas , padrones  y all i olí (+2€) ",
+    "descripcion": "Xai a la brasa amb fregides,  padrons i all i olí (+2€) \n\n",
     "alergias": ""
   },
   "segundo5": {
-    "titulo": "Entrecot de ternera a la brasa con fritas de boniato y padrons (+4€)",
-    "descripcion": "Entrecot de vedella a la brasa amb fregides de moniato i padrons (+4€)",
+    "titulo": "Lenguado a la Meunier (+2€)",
+    "descripcion": "Llenguado a la Meunier (+2€)",
     "alergias": ""
   },
   "segundo6": {
-    "titulo": "Confit de pato con cremoso de chirivías, espárragos trigueros y frambuesas liofilizadas (+3€)",
-    "descripcion": "Confit d’ànec amb cremós de xirivies, espàrrecs de marge i gerds liofilitzades (+3€)",
+    "titulo": "",
+    "descripcion": "",
     "alergias": ""
   },
   "postre1": {
-    "titulo": "Cheesecake con coulise de frutos rojos",
-    "descripcion": "Cheesecake amb coulise de fruits vermells",
+    "titulo": "Profiteroles de nata con chocolate",
+    "descripcion": "Profiterols de nata amb xocolata",
     "alergias": ""
   },
   "postre2": {
-    "titulo": "Yogur griego con miel y nueces",
-    "descripcion": "Iogurt Grec amb mel i nous",
+    "titulo": "Carpacio de naranja en canela*",
+    "descripcion": "Carpacio de taronja a canyella*",
     "alergias": "Sin Gluten"
   },
   "postre3": {
-    "titulo": "Cremoso de dulce de leche con crumble de lotus",
-    "descripcion": "Cremós de dolç de llet amb crumble de lotus",
+    "titulo": "Brownie con helado de vainilla",
+    "descripcion": "Brownie amb gelat de vainilla\n",
     "alergias": ""
   },
   "postre4": {
-    "titulo": "Coulant de chocolate con helado de vainilla (+2€)",
-    "descripcion": "Coulant de xocolata amb gelat de vainilla (+2€)",
+    "titulo": "",
+    "descripcion": "",
     "alergias": ""
   },
   "postre5": {

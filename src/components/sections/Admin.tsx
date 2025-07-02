@@ -22,6 +22,10 @@ interface MenuRawJSON {
   archivo_pdf: string;
 }
 
+interface EventDate { date: string; time: string; description: string; }
+
+
+
 type KeyPlato =
   | 'primero1' | 'primero2' | 'primero3'
   | 'primero4' | 'primero5' | 'primero6'
@@ -35,6 +39,12 @@ const Admin: React.FC = () => {
   const ADMIN_TOKEN    = import.meta.env.VITE_ADMIN_TOKEN;
   const WEBHOOK_DAILY   = '/.netlify/functions/update-daily';
   const WEBHOOK_WEEKEND = '/.netlify/functions/update-weekend';
+  const WEBHOOK_MUSIC   = '/.netlify/functions/update-musicdates';
+
+  const [musicDates, setMusicDates]       = useState<EventDate[]>([]);
+  const [formMusicDates, setFormMusicDates] = useState<EventDate[]>([]);
+  const [loadingMusic, setLoadingMusic]   = useState(true);
+  const [errorMusic, setErrorMusic]       = useState(false);
 
   // Extraer token de URL y validar
   const raw = window.location.pathname;
@@ -48,7 +58,7 @@ const Admin: React.FC = () => {
   }, []);
 
   // Pestañas
-  const [editTab, setEditTab] = useState<'daily' | 'weekend'>('daily');
+  const [editTab, setEditTab] = useState<'daily' | 'weekend' | 'music'>('daily');
 
   // Estados de datos
   const [menuDaily, setMenuDaily] = useState<MenuRawJSON | null>(null);
@@ -106,6 +116,19 @@ const Admin: React.FC = () => {
   }, [editTab]);
 
   useEffect(() => {
+      if (editTab !== 'music') return;
+      setLoadingMusic(true);
+      fetch('/music-dates.json?ts=' + Date.now())
+        .then(r => { if (!r.ok) throw new Error(); return r.json(); })
+        .then((json: { dates: EventDate[] }) => {
+          setMusicDates(json.dates);
+          setFormMusicDates(json.dates);
+        })
+        .catch(() => setErrorMusic(true))
+        .finally(() => setLoadingMusic(false));
+    }, [editTab]);
+
+  useEffect(() => {
     fetch('/menu-weekend.json?ts=' + Date.now())
       .then(res => { if (!res.ok) throw new Error(); return res.json(); })
       .then((json: MenuRawJSON) => {
@@ -136,11 +159,35 @@ const Admin: React.FC = () => {
     }));
   };
 
+  const handleMusicDateChange = (i: number, field: keyof EventDate, v: string) => {
+      setFormMusicDates(prev => {
+        const arr = [...prev];
+        arr[i] = { ...arr[i], [field]: v };
+        return arr;
+      });
+    };
+    const addMusicDate = () =>
+      setFormMusicDates(prev => ([...prev, { date: '', time: '', description: '' }]));
+    const removeMusicDate = (i: number) =>
+      setFormMusicDates(prev => prev.filter((_, idx) => idx !== i));
+
   // Envío del formulario
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const payload: MenuRawJSON = { timestamp, tipo, precio, ...formPlatos, archivo_pdf: archivoPdf };
-    const webhook = editTab === 'daily' ? WEBHOOK_DAILY : WEBHOOK_WEEKEND;
+     let payload, webhook;
+     if (editTab === 'music') {
+       webhook = WEBHOOK_MUSIC;
+       payload = { timestamp: new Date().toISOString(), tipo: 'music', dates: formMusicDates };
+     } else {
+       webhook = editTab === 'daily' ? WEBHOOK_DAILY : WEBHOOK_WEEKEND;
+       payload = {
+        timestamp,
+        tipo,
+        precio,
+        ...formPlatos,
+        archivo_pdf: archivoPdf
+      };
+     }
 
     try {
       const res = await fetch(webhook, {
@@ -192,262 +239,331 @@ const Admin: React.FC = () => {
             Panel de Administración
           </h1>
           <p className="text-center text-neutral-600 mb-8">
-            Selecciona qué menú quieres editar y completa los campos. Solo tú tienes acceso.
+            Selecciona qué quieres editar.
           </p>
   
-          {/* PESTAÑAS */}
+          {/* TABS */}
           <div className="flex justify-center mb-8">
-            <button
-              onClick={() => setEditTab('daily')}
-              className={`px-6 py-2 mx-2 rounded-full text-sm font-medium transition-all ${
-                editTab === 'daily'
-                  ? 'bg-brown-700 text-white'
-                  : 'bg-white text-neutral-700 hover:bg-neutral-100'
-              }`}
-            >
-              Editar Menú Diario
-            </button>
-            <button
-              onClick={() => setEditTab('weekend')}
-              className={`px-6 py-2 mx-2 rounded-full text-sm font-medium transition-all ${
-                editTab === 'weekend'
-                  ? 'bg-brown-700 text-white'
-                  : 'bg-white text-neutral-700 hover:bg-neutral-100'
-              }`}
-            >
-              Editar Menú Fin de Semana
-            </button>
+            {['daily', 'weekend', 'music'].map(tab => (
+              <button
+                key={tab}
+                onClick={() => setEditTab(tab as any)}
+                className={`px-6 py-2 mx-2 rounded-full text-sm font-medium transition-all ${
+                  editTab === tab
+                    ? 'bg-brown-700 text-white'
+                    : 'bg-white text-neutral-700 hover:bg-neutral-100'
+                }`}
+              >
+                {tab === 'daily'
+                  ? 'Editar Menú Diario'
+                  : tab === 'weekend'
+                  ? 'Editar Menú Fin de Semana'
+                  : 'Editar Eventos Musicales'}
+              </button>
+            ))}
           </div>
   
-          {/* FORMULARIO */}
-          <form onSubmit={handleSubmit} className="space-y-8">
-            {/* Timestamp */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Timestamp (ISO 8601)
-              </label>
-              <input
-                type="datetime-local"
-                value={timestamp.slice(0, 16)}
-                onChange={e =>
-                  setTimestamp(new Date(e.target.value).toISOString())
-                }
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                required
-              />
-            </div>
-  
-            {/* Tipo */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Tipo de menú
-              </label>
-              <select
-                value={tipo}
-                onChange={e =>
-                  setTipo(e.target.value as 'daily' | 'weekend')
-                }
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                required
-              >
-                <option value="daily">Menú Diario</option>
-                <option value="weekend">Menú Fin de Semana</option>
-              </select>
-            </div>
-  
-            {/* Precio */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Precio del menú (solo número, sin “€”)
-              </label>
-              <input
-                type="number"
-                min="0"
-                step="0.01"
-                value={precio}
-                onChange={e => setPrecio(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                required
-              />
-            </div>
-  
-            <hr className="border-gray-200" />
-  
-            {/* Primeros */}
-            <div>
-              <h2 className="text-2xl font-serif font-bold mb-4">Primeros</h2>
-              <div className="space-y-6">
-                {(
-                  ['primero1','primero2','primero3','primero4','primero5','primero6'] as KeyPlato[]
-                ).map((key, idx) => (
-                  <div key={key} className="border p-4 rounded-lg">
-                    <h3 className="font-medium mb-2">Primero {idx + 1}</h3>
-                    <div className="mb-2">
-                      <label className="block text-sm text-gray-700 mb-1">Título</label>
-                      <input
-                        type="text"
-                        value={formPlatos[key].titulo}
-                        onChange={e =>
-                          handlePlatoChange(key, 'titulo', e.target.value)
-                        }
-                        className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                      />
-                    </div>
-                    <div className="mb-2">
-                      <label className="block text-sm text-gray-700 mb-1">Descripción</label>
-                      <textarea
-                        value={formPlatos[key].descripcion}
-                        onChange={e =>
-                          handlePlatoChange(key, 'descripcion', e.target.value)
-                        }
-                        className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                        rows={2}
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm text-gray-700 mb-1">Alergias (separadas por comas)</label>
-                      <input
-                        type="text"
-                        value={formPlatos[key].alergias}
-                        onChange={e =>
-                          handlePlatoChange(key, 'alergias', e.target.value)
-                        }
-                        className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                      />
-                    </div>
+          {/* FORMULARIOS */}
+          {editTab === 'music' ? (
+            <form onSubmit={handleSubmit} className="space-y-6 max-w-xl mx-auto">
+              {formMusicDates.map((ev, i) => (
+                <div key={i} className="border p-4 rounded-lg space-y-2">
+                  <div className="flex justify-between">
+                    <h3 className="font-medium">Evento {i + 1}</h3>
+                    <button
+                      type="button"
+                      onClick={() => removeMusicDate(i)}
+                      className="text-red-500 hover:underline"
+                    >
+                      Eliminar
+                    </button>
                   </div>
-                ))}
-              </div>
-            </div>
+                  <label className="block">
+                    Fecha
+                    <input
+                      type="date"
+                      required
+                      value={ev.date}
+                      onChange={e =>
+                        handleMusicDateChange(i, 'date', e.target.value)
+                      }
+                      className="w-full border rounded px-2 py-1"
+                    />
+                  </label>
+                  <label className="block">
+                    Hora
+                    <input
+                      type="time"
+                      required
+                      value={ev.time}
+                      onChange={e =>
+                        handleMusicDateChange(i, 'time', e.target.value)
+                      }
+                      className="w-full border rounded px-2 py-1"
+                    />
+                  </label>
+                  <label className="block">
+                    Descripción
+                    <input
+                      type="text"
+                      required
+                      value={ev.description}
+                      onChange={e =>
+                        handleMusicDateChange(i, 'description', e.target.value)
+                      }
+                      className="w-full border rounded px-2 py-1"
+                    />
+                  </label>
+                </div>
+              ))}
   
-            <hr className="border-gray-200" />
-  
-            {/* Segundos */}
-            <div>
-              <h2 className="text-2xl font-serif font-bold mb-4">Segundos</h2>
-              <div className="space-y-6">
-                {(
-                  ['segundo1','segundo2','segundo3','segundo4','segundo5','segundo6'] as KeyPlato[]
-                ).map((key, idx) => (
-                  <div key={key} className="border p-4 rounded-lg">
-                    <h3 className="font-medium mb-2">Segundo {idx + 1}</h3>
-                    <div className="mb-2">
-                      <label className="block text-sm text-gray-700 mb-1">Título</label>
-                      <input
-                        type="text"
-                        value={formPlatos[key].titulo}
-                        onChange={e =>
-                          handlePlatoChange(key, 'titulo', e.target.value)
-                        }
-                        className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                      />
-                    </div>
-                    <div className="mb-2">
-                      <label className="block text-sm text-gray-700 mb-1">Descripción</label>
-                      <textarea
-                        value={formPlatos[key].descripcion}
-                        onChange={e =>
-                          handlePlatoChange(key, 'descripcion', e.target.value)
-                        }
-                        className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                        rows={2}
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm text-gray-700 mb-1">Alergias (separadas por comas)</label>
-                      <input
-                        type="text"
-                        value={formPlatos[key].alergias}
-                        onChange={e =>
-                          handlePlatoChange(key, 'alergias', e.target.value)
-                        }
-                        className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-  
-            <hr className="border-gray-200" />
-  
-            {/* Postres */}
-            <div>
-              <h2 className="text-2xl font-serif font-bold mb-4">Postres</h2>
-              <div className="space-y-6">
-                {(
-                  ['postre1','postre2','postre3','postre4','postre5'] as KeyPlato[]
-                ).map((key, idx) => (
-                  <div key={key} className="border p-4 rounded-lg">
-                    <h3 className="font-medium mb-2">Postre {idx + 1}</h3>
-                    <div className="mb-2">
-                      <label className="block text-sm text-gray-700 mb-1">Título</label>
-                      <input
-                        type="text"
-                        value={formPlatos[key].titulo}
-                        onChange={e =>
-                          handlePlatoChange(key, 'titulo', e.target.value)
-                        }
-                        className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                      />
-                    </div>
-                    <div className="mb-2">
-                      <label className="block text-sm text-gray-700 mb-1">Descripción</label>
-                      <textarea
-                        value={formPlatos[key].descripcion}
-                        onChange={e =>
-                          handlePlatoChange(key, 'descripcion', e.target.value)
-                        }
-                        className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                        rows={2}
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm text-gray-700 mb-1">Alergias (separadas por comas)</label>
-                      <input
-                        type="text"
-                        value={formPlatos[key].alergias}
-                        onChange={e =>
-                          handlePlatoChange(key, 'alergias', e.target.value)
-                        }
-                        className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-  
-            <hr className="border-gray-200" />
-  
-            {/* Archivo PDF */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                URL del PDF completo
-              </label>
-              <input
-                type="text"
-                value={archivoPdf}
-                onChange={e => setArchivoPdf(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                placeholder="https://ejemplo.com/menus/menu-completo.pdf"
-              />
-            </div>
-  
-            {/* Botón de envío */}
-            <div className="text-center">
               <button
-                type="submit"
-                className="inline-flex items-center px-6 py-3 bg-brown-700 text-white rounded-full hover:bg-brown-800 transition-all font-medium"
+                type="button"
+                onClick={addMusicDate}
+                className="px-4 py-2 bg-green-600 text-white rounded-full hover:bg-green-700"
               >
-                Guardar Cambios
+                Añadir Evento
               </button>
-            </div>
-          </form>
+  
+              <div className="text-center mt-4">
+                <button
+                  type="submit"
+                  className="px-6 py-3 bg-brown-700 text-white rounded-full hover:bg-brown-800"
+                >
+                  Guardar Eventos Musicales
+                </button>
+              </div>
+            </form>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-8">
+              {/* Timestamp */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Timestamp (ISO 8601)
+                </label>
+                <input
+                  type="datetime-local"
+                  value={timestamp.slice(0, 16)}
+                  onChange={e =>
+                    setTimestamp(new Date(e.target.value).toISOString())
+                  }
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                  required
+                />
+              </div>
+  
+              {/* Tipo */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Tipo de menú
+                </label>
+                <select
+                  value={tipo}
+                  onChange={e =>
+                    setTipo(e.target.value as 'daily' | 'weekend')
+                  }
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                  required
+                >
+                  <option value="daily">Menú Diario</option>
+                  <option value="weekend">Menú Fin de Semana</option>
+                </select>
+              </div>
+  
+              {/* Precio */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Precio del menú (solo número, sin “€”)
+                </label>
+                <input
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  value={precio}
+                  onChange={e => setPrecio(e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                  required
+                />
+              </div>
+  
+              <hr className="border-gray-200" />
+  
+              {/* Primeros */}
+              <div>
+                <h2 className="text-2xl font-serif font-bold mb-4">Primeros</h2>
+                <div className="space-y-6">
+                  {(
+                    ['primero1','primero2','primero3','primero4','primero5','primero6'] as KeyPlato[]
+                  ).map((key, idx) => (
+                    <div key={key} className="border p-4 rounded-lg">
+                      <h3 className="font-medium mb-2">Primero {idx + 1}</h3>
+                      <div className="mb-2">
+                        <label className="block text-sm text-gray-700 mb-1">Título</label>
+                        <input
+                          type="text"
+                          value={formPlatos[key].titulo}
+                          onChange={e =>
+                            handlePlatoChange(key, 'titulo', e.target.value)
+                          }
+                          className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                        />
+                      </div>
+                      <div className="mb-2">
+                        <label className="block text-sm text-gray-700 mb-1">Descripción</label>
+                        <textarea
+                          value={formPlatos[key].descripcion}
+                          onChange={e =>
+                            handlePlatoChange(key, 'descripcion', e.target.value)
+                          }
+                          className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                          rows={2}
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm text-gray-700 mb-1">Alergias (separadas por comas)</label>
+                        <input
+                          type="text"
+                          value={formPlatos[key].alergias}
+                          onChange={e =>
+                            handlePlatoChange(key, 'alergias', e.target.value)
+                          }
+                          className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+  
+              <hr className="border-gray-200" />
+  
+              {/* Segundos */}
+              <div>
+                <h2 className="text-2xl font-serif font-bold mb-4">Segundos</h2>
+                <div className="space-y-6">
+                  {(
+                    ['segundo1','segundo2','segundo3','segundo4','segundo5','segundo6'] as KeyPlato[]
+                  ).map((key, idx) => (
+                    <div key={key} className="border p-4 rounded-lg">
+                      <h3 className="font-medium mb-2">Segundo {idx + 1}</h3>
+                      <div className="mb-2">
+                        <label className="block text-sm text-gray-700 mb-1">Título</label>
+                        <input
+                          type="text"
+                          value={formPlatos[key].titulo}
+                          onChange={e =>
+                            handlePlatoChange(key, 'titulo', e.target.value)
+                          }
+                          className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                        />
+                      </div>
+                      <div className="mb-2">
+                        <label className="block text-sm text-gray-700 mb-1">Descripción</label>
+                        <textarea
+                          value={formPlatos[key].descripcion}
+                          onChange={e =>
+                            handlePlatoChange(key, 'descripcion', e.target.value)
+                          }
+                          className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                          rows={2}
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm text-gray-700 mb-1">Alergias (separadas por comas)</label>
+                        <input
+                          type="text"
+                          value={formPlatos[key].alergias}
+                          onChange={e =>
+                            handlePlatoChange(key, 'alergias', e.target.value)
+                          }
+                          className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+  
+              <hr className="border-gray-200" />
+  
+              {/* Postres */}
+              <div>
+                <h2 className="text-2xl font-serif font-bold mb-4">Postres</h2>
+                <div className="space-y-6">
+                  {(
+                    ['postre1','postre2','postre3','postre4','postre5'] as KeyPlato[]
+                  ).map((key, idx) => (
+                    <div key={key} className="border p-4 rounded-lg">
+                      <h3 className="font-medium mb-2">Postre {idx + 1}</h3>
+                      <div className="mb-2">
+                        <label className="block text-sm text-gray-700 mb-1">Título</label>
+                        <input
+                          type="text"
+                          value={formPlatos[key].titulo}
+                          onChange={e =>
+                            handlePlatoChange(key, 'titulo', e.target.value)
+                          }
+                          className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                        />
+                      </div>
+                      <div className="mb-2">
+                        <label className="block text-sm text-gray-700 mb-1">Descripción</label>
+                        <textarea
+                          value={formPlatos[key].descripcion}
+                          onChange={e =>
+                            handlePlatoChange(key, 'descripcion', e.target.value)
+                          }
+                          className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                          rows={2}
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm text-gray-700 mb-1">Alergias (separadas por comas)</label>
+                        <input
+                          type="text"
+                          value={formPlatos[key].alergias}
+                          onChange={e =>
+                            handlePlatoChange(key, 'alergias', e.target.value)
+                          }
+                          className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+  
+              <hr className="border-gray-200" />
+  
+              {/* Archivo PDF */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  URL del PDF completo
+                </label>
+                <input
+                  type="text"
+                  value={archivoPdf}
+                  onChange={e => setArchivoPdf(e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                  placeholder="https://ejemplo.com/menus/menu-completo.pdf"
+                />
+              </div>
+  
+              {/* Botón de envío */}
+              <div className="text-center">
+                <button
+                  type="submit"
+                  className="inline-flex items-center px-6 py-3 bg-brown-700 text-white rounded-full hover:bg-brown-800 transition-all font-medium"
+                >
+                  Guardar Cambios
+                </button>
+              </div>
+            </form>
+          )}
         </div>
       </section>
   
-      {/* Modal de resultado */}
+      {/* MODAL DE RESULTADO */}
       <Modal
         isOpen={modalOpen}
         success={modalSuccess}
@@ -460,6 +576,6 @@ const Admin: React.FC = () => {
       />
     </>
   );
-};
-
-export default Admin;
+    };
+    
+    export default Admin;

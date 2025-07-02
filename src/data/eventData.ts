@@ -1,4 +1,4 @@
-interface EventDate {
+export interface EventDate {
   date: string;
   time: string;
   description: string;

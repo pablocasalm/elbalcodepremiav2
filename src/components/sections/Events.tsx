@@ -1,7 +1,13 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { useInView } from '../hooks/useInView';
 import { Calendar, Music, Users, Heart } from 'lucide-react';
 import EventCard from '../ui/EventCard';
+
+interface EventDate {
+  date: string;
+  time: string;
+  description: string;
+}
 
 const events = [
   {
@@ -37,6 +43,21 @@ const events = [
 const Events: React.FC = () => {
   const { ref: sectionRef, inView } = useInView({ threshold: 0.2 });
 
+  // 1) Estado y efecto para los próximos conciertos
+  const [upcomingMusic, setUpcomingMusic] = useState<EventDate[]>([]);
+
+  useEffect(() => {
+    fetch('/music-dates.json')
+      .then(r => r.json())
+      .then((json: { dates: EventDate[] }) => {
+        const today = new Date().toISOString().slice(0, 10);
+        const futuros = json.dates
+          .filter(ev => ev.date >= today)
+          .sort((a, b) => a.date.localeCompare(b.date));
+        setUpcomingMusic(futuros.slice(0, 8));
+      });
+  }, []);
+
   return (
     <section id="events" className="py-24 bg-brown-50" ref={sectionRef}>
       <div className="container mx-auto px-4 md:px-6">
@@ -50,7 +71,7 @@ const Events: React.FC = () => {
           </p>
         </div>
 
-        <div 
+        <div
           className={`grid grid-cols-1 md:grid-cols-2 gap-8 auto-rows-auto transition-all duration-1000 transform ${
             inView ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
           }`}
@@ -66,6 +87,23 @@ const Events: React.FC = () => {
             />
           ))}
         </div>
+      </div>
+
+      {/* Próximos Conciertos (máx 8 futuros) */}
+      <div className="mt-16 max-w-3xl mx-auto px-4 md:px-6">
+        <h3 className="text-2xl font-serif font-bold mb-4">Próximos Conciertos</h3>
+        {upcomingMusic.length === 0 ? (
+          <p className="text-neutral-600">No hay eventos musicales programados.</p>
+        ) : (
+          upcomingMusic.map((ev, i) => (
+            <div key={i} className="mb-6 border-b pb-4">
+              <p className="font-medium">
+                {ev.date} &mdash; {ev.time}
+              </p>
+              <p className="text-neutral-700">{ev.description}</p>
+            </div>
+          ))
+        )}
       </div>
     </section>
   );

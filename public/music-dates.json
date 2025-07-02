@@ -1,0 +1,21 @@
+{
+  "timestamp": "2025-06-18T12:00:00.000Z",
+  "tipo": "music",
+  "dates": [
+    {
+      "date": "2025-05-24",
+      "time": "20:30",
+      "description": "Jazz en vivo con Trio Mediterráneo"
+    },
+    {
+      "date": "2025-05-31",
+      "time": "21:00",
+      "description": "Noche de Flamenco Fusión"
+    },
+    {
+      "date": "2025-06-07",
+      "time": "20:30",
+      "description": "Música Acústica con Mar i Vent"
+    }
+  ]
+}

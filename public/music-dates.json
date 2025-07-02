@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-07-02T12:19:37.365Z",
+  "timestamp": "2025-07-02T13:17:58.161Z",
   "tipo": "music",
   "dates": [
     {
@@ -21,6 +21,21 @@
       "date": "2025-07-13",
       "time": "12:00",
       "description": "Xavi & Helen (Aperitivo)"
+    },
+    {
+      "date": "2025-07-20",
+      "time": "12:00",
+      "description": "Two Much Covers (Aperitivo)"
+    },
+    {
+      "date": "2025-07-26",
+      "time": "19:00",
+      "description": "CONFINA2 (Tardeo)"
+    },
+    {
+      "date": "2025-07-27",
+      "time": "12:00",
+      "description": "DDIVAS (Aperitivo)"
     }
   ]
 }

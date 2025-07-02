@@ -1,65 +1,91 @@
-import React, {useState, useEffect} from 'react';
+// src/components/sections/Events.tsx
+import React, { useState, useEffect } from 'react';
 import { useInView } from '../hooks/useInView';
 import { Calendar, Music, Users, Heart } from 'lucide-react';
 import EventCard from '../ui/EventCard';
+import { formatSpanishDate } from '../../utils/formatDate';
 
-interface EventDate {
+export interface EventDate {
   date: string;
   time: string;
   description: string;
 }
 
-const events = [
-  {
-    title: "Celebraciones Privadas",
-    description: "Desde bodas hasta aniversarios, haz que tu día especial sea inolvidable con nuestros menús personalizados y nuestro hermoso entorno mediterráneo.",
-    icon: Calendar,
-    image: "https://images.pexels.com/photos/5692285/pexels-photo-5692285.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    type: 'celebrations' as const
-  },
-  {
-    title: "Noches de Música en Vivo",
-    description: "Únete a nuestros eventos musicales regulares con talento local, creando el ambiente perfecto para una mágica velada mediterránea.",
-    icon: Music,
-    image: "https://images.pexels.com/photos/2701570/pexels-photo-2701570.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    type: 'music' as const
-  },
-  {
-    title: "Eventos Corporativos",
-    description: "Impresiona a tus clientes o premia a tu equipo con nuestros paquetes corporativos, que incluyen una exquisita gastronomía en un entorno inspirador.",
-    icon: Users,
-    image: "https://images.pexels.com/photos/3184183/pexels-photo-3184183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    type: 'corporate' as const
-  },
-  {
-    title: "Citas Singles",
-    description: "Participa en nuestras veladas especiales para singles, donde la buena gastronomía se combina con la oportunidad de conocer gente nueva en un ambiente relajado y elegante.",
-    icon: Heart,
-    image: "https://images.pexels.com/photos/5638732/pexels-photo-5638732.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    type: 'singles' as const
-  }
-];
-
 const Events: React.FC = () => {
   const { ref: sectionRef, inView } = useInView({ threshold: 0.2 });
-
-  // 1) Estado y efecto para los próximos conciertos
   const [upcomingMusic, setUpcomingMusic] = useState<EventDate[]>([]);
 
   useEffect(() => {
     fetch('/music-dates.json')
-      .then(r => r.json())
+      .then(r => {
+        if (!r.ok) throw new Error('No se pudo cargar music-dates.json');
+        return r.json();
+      })
       .then((json: { dates: EventDate[] }) => {
         const today = new Date().toISOString().slice(0, 10);
         const futuros = json.dates
           .filter(ev => ev.date >= today)
-          .sort((a, b) => a.date.localeCompare(b.date));
-        setUpcomingMusic(futuros.slice(0, 8));
+          .sort((a, b) => a.date.localeCompare(b.date))
+          .slice(0, 8)
+          // formatea la fecha ISO a "D de <mes>"
+          .map(ev => ({
+            ...ev,
+            date: formatSpanishDate(ev.date)
+          }));
+        setUpcomingMusic(futuros);
+      })
+      .catch(err => {
+        console.error(err);
+        setUpcomingMusic([]);
       });
   }, []);
 
+  const staticEvents = [
+    {
+      title: "Celebraciones Privadas",
+      description:
+        "Desde bodas hasta aniversarios, haz que tu día especial sea inolvidable con nuestros menús personalizados y nuestro hermoso entorno mediterráneo.",
+      icon: Calendar,
+      image:
+        "https://images.pexels.com/photos/5692285/pexels-photo-5692285.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      type: 'celebrations' as const,
+    },
+    {
+      title: "Noches de Música en Vivo",
+      description:
+        "Únete a nuestros eventos musicales regulares con talento local, creando el ambiente perfecto para una mágica velada mediterránea.",
+      icon: Music,
+      image:
+        "https://images.pexels.com/photos/2701570/pexels-photo-2701570.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      type: 'music' as const,
+      dates: upcomingMusic,
+    },
+    {
+      title: "Eventos Corporativos",
+      description:
+        "Impresiona a tus clientes o premia a tu equipo con nuestros paquetes corporativos, que incluyen una exquisita gastronomía en un entorno inspirador.",
+      icon: Users,
+      image:
+        "https://images.pexels.com/photos/3184183/pexels-photo-3184183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      type: 'corporate' as const,
+    },
+    {
+      title: "Citas Singles",
+      description:
+        "Participa en nuestras veladas especiales para singles, donde la buena gastronomía se combina con la oportunidad de conocer gente nueva en un ambiente relajado y elegante.",
+      icon: Heart,
+      image:
+        "https://images.pexels.com/photos/5638732/pexels-photo-5638732.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      type: 'singles' as const,
+    },
+  ];
+
   return (
-    <section id="events" className="py-24 bg-brown-50" ref={sectionRef}>
+    <section
+      id="events"
+      className="py-24 bg-brown-50"
+      ref={sectionRef}
+    >
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <span className="text-brown-700 font-medium">CELEBRA CON NOSOTROS</span>
@@ -76,7 +102,7 @@ const Events: React.FC = () => {
             inView ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
           }`}
         >
-          {events.map((event, index) => (
+          {staticEvents.map((event, index) => (
             <EventCard
               key={index}
               title={event.title}
@@ -84,26 +110,10 @@ const Events: React.FC = () => {
               icon={event.icon}
               image={event.image}
               type={event.type}
+              dates={event.type === 'music' ? event.dates : undefined}
             />
           ))}
         </div>
-      </div>
-
-      {/* Próximos Conciertos (máx 8 futuros) */}
-      <div className="mt-16 max-w-3xl mx-auto px-4 md:px-6">
-        <h3 className="text-2xl font-serif font-bold mb-4">Próximos Conciertos</h3>
-        {upcomingMusic.length === 0 ? (
-          <p className="text-neutral-600">No hay eventos musicales programados.</p>
-        ) : (
-          upcomingMusic.map((ev, i) => (
-            <div key={i} className="mb-6 border-b pb-4">
-              <p className="font-medium">
-                {ev.date} &mdash; {ev.time}
-              </p>
-              <p className="text-neutral-700">{ev.description}</p>
-            </div>
-          ))
-        )}
       </div>
     </section>
   );

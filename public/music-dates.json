@@ -1,21 +1,26 @@
 {
-  "timestamp": "2025-06-18T12:00:00.000Z",
+  "timestamp": "2025-07-02T12:19:37.365Z",
   "tipo": "music",
   "dates": [
     {
-      "date": "2025-05-24",
-      "time": "20:30",
-      "description": "Jazz en vivo con Trio Mediterráneo"
+      "date": "2025-07-04",
+      "time": "19:00",
+      "description": "VO versión original (Tardeo)"
     },
     {
-      "date": "2025-05-31",
-      "time": "21:00",
-      "description": "Noche de Flamenco Fusión"
+      "date": "2025-07-05",
+      "time": "19:00",
+      "description": "CONFINA2 (Tardeo)"
     },
     {
-      "date": "2025-06-07",
-      "time": "20:30",
-      "description": "Música Acústica con Mar i Vent"
+      "date": "2025-07-12",
+      "time": "19:30",
+      "description": "White Summer (Desfile)"
+    },
+    {
+      "date": "2025-07-13",
+      "time": "12:00",
+      "description": "Xavi & Helen (Aperitivo)"
     }
   ]
 }

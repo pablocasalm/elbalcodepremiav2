@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-07-02T13:17:58.161Z",
+  "timestamp": "2025-07-02T13:21:10.421Z",
   "tipo": "music",
   "dates": [
     {
@@ -36,6 +36,11 @@
       "date": "2025-07-27",
       "time": "12:00",
       "description": "DDIVAS (Aperitivo)"
+    },
+    {
+      "date": "2025-07-19",
+      "time": "19:00",
+      "description": "The Tasting Band (Tardeo)"
     }
   ]
 }

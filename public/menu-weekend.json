@@ -3,23 +3,23 @@
   "tipo": "weekend",
   "precio": "26.95",
   "primero1": {
-    "titulo": "Gambitas rojas a la sal con mayo de wasabi a banda*",
-    "descripcion": " Gambetes vermelles a la sal amb maig de wasabi a banda*",
+    "titulo": "⁠Ensaladilla de embutidos ibéricos con mayonesa de piparras, encurtidos y huevo frito*",
+    "descripcion": "⁠Amanida d'embotits ibèrics amb maionesa de piparres, adobats i ou ferrat*",
     "alergias": "Sin Gluten"
   },
   "primero2": {
-    "titulo": "Carpaccio de peras con virutas de jamon iberico, gorgonzola, nueces y balsamico de modena*",
-    "descripcion": "Carpaccio de peres amb encenalls de pernil ibèric, gorgonzola, nous i balsàmic de modena*\n",
+    "titulo": "Dados de salmón marinado con mayo de eneldo, rabanillos y ralladura de lima*",
+    "descripcion": "Daus de salmó marinat amb maionesa d'anet, raves i ratlladura de llima*",
     "alergias": "Sin Gluten"
   },
   "primero3": {
-    "titulo": "Salmorejo de frutos rojos con dados de queso feta y menta",
-    "descripcion": "Salmorejo de fruits vermells amb daus de formatge feta i menta",
-    "alergias": ""
+    "titulo": " ⁠⁠Berenjena a la llama con tomates cherrys asados, tomates secos, piñones, pesto y parmesano*",
+    "descripcion": "Albergínia a la flama amb tomàquets cherrys rostits, tomàquets secs, pinyons, pesto i parmesà*",
+    "alergias": "Sin gluten "
   },
   "primero4": {
-    "titulo": "Rigatoni a la carbonara clasica con guanciale y parmesano",
-    "descripcion": "Rigatoni a la carbonara classica amb guanciale i parmesà",
+    "titulo": "⁠⁠Brioche relleno de butifarra de huevo con mayonesa de peras, cebolla frita y bacon crujiente",
+    "descripcion": " Brioix farcit de botifarra d'ou amb maionesa de peres, ceba fregida i bacó cruixent",
     "alergias": ""
   },
   "primero5": {
@@ -33,24 +33,24 @@
     "alergias": ""
   },
   "segundo1": {
-    "titulo": "Confit de pato con cremoso de calabaza asada, salsa de naranja, grosellas y shitake*",
-    "descripcion": "Confit d'ànec amb cremós de carbassa rostida, salsa de taronja, groselles i shitake*\n",
-    "alergias": "Sin Gluten"
+    "titulo": "Costillas de cerdo con salsa barbacoa y patatas fritas de boniato",
+    "descripcion": "⁠Costelles de porc amb salsa barbacoa i patates fregides de moniato.",
+    "alergias": ""
   },
   "segundo2": {
-    "titulo": "Abanico de cerdo iberico a la brasa con reduccion de oporto y fritas de boniato",
-    "descripcion": "Ventall de porc ibèric a la brasa amb reducció de porto i fregides de moniato",
+    "titulo": "⁠Lomo de corvina a la plancha con cremoso de piquillos, espárragos trigueros y chips de remolacha",
+    "descripcion": "Llom de corbina a la planxa amb cremós de piquillos, espàrrecs de marge i xips de remolatxa",
     "alergias": ""
   },
   "segundo3": {
-    "titulo": "Lomo de salmon a la plancha con wok de verduras, teriyaki y sesamo",
-    "descripcion": "Llom de salmó a la planxa amb wok de verdures, teriyaki i sèsam",
-    "alergias": ""
+    "titulo": " ⁠⁠Arroz a la marinera con calamares, almejas y gambas*",
+    "descripcion": "⁠Arròs a la marinera amb calamars, cloïsses i gambes*",
+    "alergias": "Sin Gluten "
   },
   "segundo4": {
-    "titulo": "Arroz de secreto iberico, pimientos del padron y ajos tiernos",
-    "descripcion": "Arròs de secret iberic,  pebrots del padró i alls tendres",
-    "alergias": ""
+    "titulo": "⁠Magret de pato lacado al Ratafia con zanahorias mini y chalotas*",
+    "descripcion": "Magret d'ànec lacat al Ratafia amb pastanagues mini i escalunyes*",
+    "alergias": "Sin Gluten "
   },
   "segundo5": {
     "titulo": "",
@@ -63,24 +63,24 @@
     "alergias": ""
   },
   "postre1": {
-    "titulo": "Tiramisú",
-    "descripcion": "Tiramisú",
+    "titulo": "  ⁠Lemon pie al estilo  del balco",
+    "descripcion": "⁠ ⁠Lemon pie a l’estil del balco",
     "alergias": ""
   },
   "postre2": {
-    "titulo": "⁠Ganache de chocolate con torraditas, AOVE y sal en escamas",
-    "descripcion": "⁠Ganache de chocolate con torraditas, AOVE y sal en escamas\n",
+    "titulo": "Coulant de chocolate con helado de vainilla",
+    "descripcion": "⁠Coulant de xocolata amb gelat de vainilla",
     "alergias": ""
   },
   "postre3": {
-    "titulo": "⁠Sorbete de citricos con cava*",
-    "descripcion": "Sorbet de cítrics amb cava*\n",
+    "titulo": "⁠Carpaccio de piña con sorbete de limon*",
+    "descripcion": "Carpaccio de pinya amb sorbet de llimona*",
     "alergias": "Sin Gluten"
   },
   "postre4": {
-    "titulo": "Crema de mango con fresas, grosellas y ralladura de lima*",
-    "descripcion": "\nCrema de mango amb maduixes, groselles i ratlladura de llima*",
-    "alergias": "Sin Gluten"
+    "titulo": "⁠⁠Tatin de manzana con helado de canela",
+    "descripcion": "Tatin de poma amb gelat de canyella\n",
+    "alergias": ""
   },
   "postre5": {
     "titulo": "",

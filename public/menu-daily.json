@@ -18,13 +18,13 @@
     "alergias": "Sin Gluten "
   },
   "primero4": {
-    "titulo": "Gambetes vermelles a la sal amb maionesa de wasabi a banda (+1,50 €)*",
-    "descripcion": "Gambitas rojas a la sal con mayonesa de wasabi a banda ( +1,50€)",
-    "alergias": "Sin Gluten "
+    "titulo": "",
+    "descripcion": "",
+    "alergias": ""
   },
   "primero5": {
-    "titulo": " Salmorejo de fruits vermells amb nabius, groselles i picatostes (+1 €)",
-    "descripcion": "Salmorejo de frutos rojos con arándanos , grosellas y picatostes. (+1€)\n",
+    "titulo": "",
+    "descripcion": "\n",
     "alergias": ""
   },
   "primero6": {
@@ -53,13 +53,13 @@
     "alergias": ""
   },
   "segundo5": {
-    "titulo": "Confit d'ànec amb cremós de carabassa rostida, grosella, bolets i salsa de taronja *",
-    "descripcion": "Confit de pato con cremoso de calabaza asada , grosellas , setas y salsa de naranja. *\n",
-    "alergias": "Sin Gluten "
+    "titulo": "Confit de pato con cremoso de apio nabo, grosella, setas y coulis de frambuesa.",
+    "descripcion": "Confit d’ànec amb cremós de celeri, grosella, bolets i coulis de frambuesa . \n",
+    "alergias": ""
   },
   "segundo6": {
-    "titulo": "",
-    "descripcion": "",
+    "titulo": "Arroz de marisco con calamares pequeños, gambas y almejas",
+    "descripcion": "Arròs de marisc amb calamarcets, gambes i cloïsses",
     "alergias": ""
   },
   "postre1": {

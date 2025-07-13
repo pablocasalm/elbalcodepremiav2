@@ -3,28 +3,28 @@
   "tipo": "daily",
   "precio": "17.50",
   "primero1": {
-    "titulo": "Carpaccio de tomàquet amb formatge feta, ceba morada, préssec i tonyina*",
-    "descripcion": "Carpaccio de tomate con queso feta, cebolla morada , melocotón y atun. *",
-    "alergias": "Sin Gluten"
+    "titulo": "Berenjena en tempura con miel de caña.",
+    "descripcion": "Albergínia en tempura amb mel de canya.",
+    "alergias": ""
   },
   "primero2": {
-    "titulo": "Rigatoni al ragu de vedella amb parmesà i ametlles torrades.",
-    "descripcion": "Rigatoni al ragu de ternera con parmesano y almendras tostadas. \n",
+    "titulo": "Canelones de rustido con bechamel trufada y gratinados con Emmental",
+    "descripcion": "Canelons de rostit amb beixamel de tòfona i gratinats amb Emmental.",
     "alergias": ""
   },
   "primero3": {
-    "titulo": "Parmentier Trufada amb botifarra blanca i daus de poma verda. *",
-    "descripcion": "Parmentier Trufada con butifarra blanca y dados de manzana verde *",
+    "titulo": "Carpaccio de melon con virutas de jamón , queso de cabra caramelizado , vinagreta de maracuyá y piñones. *",
+    "descripcion": "Carpaccio de meló amb encencenalls de pernil , formatge de cabra caramel·litzat , vinagreta de fruit de la pasiópinyons. *",
     "alergias": "Sin Gluten "
   },
   "primero4": {
-    "titulo": "",
-    "descripcion": "",
-    "alergias": ""
+    "titulo": "Dados de salmon marinado con mayonesa de eneldo, rabanillos y ralladura de lima * (+3€)Daus de salmon marinat amb mmaionesa d'anet, raves i ratlladura de llima* (+3€)",
+    "descripcion": "Daus de salmon marinat amb mmaionesa d'anet, raves i ratlladura de llima* (+3€)",
+    "alergias": "Sin Gluten"
   },
   "primero5": {
-    "titulo": "",
-    "descripcion": "\n",
+    "titulo": "Briox relleno de butifarra de huevo con mayonesa de pera, cebolla roja encurtida y bacon crujiente ( +2€)",
+    "descripcion": "Briox farcit de botifarra d'ou amb maionesa de pera, ceba vermella adobada i bacon cruixent ( +2€)",
     "alergias": ""
   },
   "primero6": {
@@ -33,53 +33,53 @@
     "alergias": ""
   },
   "segundo1": {
-    "titulo": "Xurrasco a la brasa amb patates fregides i allioli ",
-    "descripcion": "Xurrasco a la brasa con patatas fritas y all i oli. ",
-    "alergias": ""
+    "titulo": "Suprema de lubina a la plancha , con cremoso de piquillos y wok de calabacín con setas* ",
+    "descripcion": "Suprema de llobarro a la planxa , amb cremós de piquillos i wok de carabasseta amb bolets*",
+    "alergias": "Sin Gluten "
   },
   "segundo2": {
-    "titulo": " Salsitxes encebades amb salsa de tomàquet casolana i arròs basmati a banda*",
-    "descripcion": "Salchichas encebolladas con salsa de tomate casera y arroz a banda *",
-    "alergias": "Sin Gluten"
+    "titulo": "Lagarto de cerdo a la brasa con patatas fritas, padrones y all i oli. ",
+    "descripcion": "Llangardaix de porc a la brasa amb patates fregides, padrons i all i oli.",
+    "alergias": ""
   },
   "segundo3": {
-    "titulo": "Suprema de daurada*",
-    "descripcion": "Suprema de Dorada *\n",
-    "alergias": "Sin Gluten"
+    "titulo": "Contramuslo de pollo con salsa de crema de cacahuete y especies y arroz basmati a banda. ",
+    "descripcion": "Contracuixa amb salsa de crema de cacauet i espècies i arròs basmati a banda.\n",
+    "alergias": ""
   },
   "segundo4": {
-    "titulo": "La donostiarra amb patata panadera i alls tendres",
-    "descripcion": "La donostiarra con patatas panadera y ajos tiernos \n\n",
+    "titulo": "Costillar de cerdo con salsa barbacoa y patatas fritas de boniato (+2)",
+    "descripcion": "Costellam de porc amb salsa barbacoa i patates fregides de moniato (+2)",
     "alergias": ""
   },
   "segundo5": {
-    "titulo": "Confit de pato con cremoso de apio nabo, grosella, setas y coulis de frambuesa.",
-    "descripcion": "Confit d’ànec amb cremós de celeri, grosella, bolets i coulis de frambuesa . \n",
+    "titulo": "",
+    "descripcion": "",
     "alergias": ""
   },
   "segundo6": {
-    "titulo": "Arroz de marisco con calamares pequeños, gambas y almejas",
-    "descripcion": "Arròs de marisc amb calamarcets, gambes i cloïsses",
+    "titulo": "",
+    "descripcion": "",
     "alergias": ""
   },
   "postre1": {
-    "titulo": "Iogurt grec amb mel i nous *",
-    "descripcion": "Yogurt griego con miel y nueces. *",
-    "alergias": "Sin Gluten "
+    "titulo": "Poma al forn amb gelat de canyella.",
+    "descripcion": "Manzana al horno co helado de canela. \n",
+    "alergias": ""
   },
   "postre2": {
-    "titulo": "Crema de Mango amb maduixes i ralladura de llimona *",
-    "descripcion": "Crema de Mango con fresas y ralladura de limon.*",
+    "titulo": "Sorbete de limon *",
+    "descripcion": "Sorbet de llimona *",
     "alergias": "Sin Gluten"
   },
   "postre3": {
-    "titulo": "Sorbet de gerd con coulise de fruits vermells *",
-    "descripcion": "Sorbete de frambuesa con coulise de frutos rojos.*\n",
+    "titulo": "Cremoso de nutela con avellanas tostádas *",
+    "descripcion": "Cremos de nutela amb avellanes tórrales *\n",
     "alergias": "Sin Gluten "
   },
   "postre4": {
-    "titulo": "",
-    "descripcion": "",
+    "titulo": "Coulant de chocolate con helado de vainilla (+2)",
+    "descripcion": "Coulant de xocolata amb gelat de vainil-la",
     "alergias": ""
   },
   "postre5": {

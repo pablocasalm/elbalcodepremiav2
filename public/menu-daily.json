@@ -3,24 +3,24 @@
   "tipo": "daily",
   "precio": "17.50",
   "primero1": {
-    "titulo": " Tortelini a los 4 quesos con nueces y lascas de parmesano",
-    "descripcion": "Tortelini als 4 formatges amb nous i lasques de parmesà.",
+    "titulo": "Fagotinis con salsa 4 quesos , con avellana y parmesano.",
+    "descripcion": "Fagotinis amb salsa 4 formatges , amb avellana i parmesà. \n",
     "alergias": ""
   },
   "primero2": {
-    "titulo": "- ⁠Ensalada de tomate con melocoton braseado, stracciatela de burrata, olivada y kikos*",
-    "descripcion": "-Amanida de tomaquet amb presec brasejat, stracciatela de burrata, olivada i kikos *",
+    "titulo": "Carpaccio de calabacin con vinagreta de virutas de verdura y queso feta. ",
+    "descripcion": "Carpaccio de carbassó amb vinagreta d’encenalls  de verdura i formatge feta. ",
     "alergias": "Sin gluten"
   },
   "primero3": {
-    "titulo": " ⁠Piquillos rellenos de brandada de bacalao con bechamel de Idiazabal gratinados con emmental",
-    "descripcion": "\nPiquillos farcits de brandada de bacallà amb beixamel de Idiazabal gratinats amb emmental. \n",
-    "alergias": ""
+    "titulo": " ⁠Escaixada de bacalao con pasta de aceitunas negras. ",
+    "descripcion": "Escaixada de bacallà amb pasta d'olives negres. \n\n",
+    "alergias": "Sin Gluten "
   },
   "primero4": {
-    "titulo": "Almejas al vapor con ajo y perejil (+2€)",
-    "descripcion": "Cloïsses al vapor amb all i julivert ( +2€)",
-    "alergias": "Sin Gluten"
+    "titulo": "Trencadisa de sobrasada y queso azul con torraditas.  ",
+    "descripcion": "Trencadisa de sobrasada i formatge blau amb torradetes. ",
+    "alergias": ""
   },
   "primero5": {
     "titulo": "",
@@ -33,24 +33,24 @@
     "alergias": ""
   },
   "segundo1": {
-    "titulo": "Lomo de salmon a la plancha con wok de verduras, teriyaki y sesamo.",
-    "descripcion": "Llom de salmò a la planxa amb wok de verdures, teriyaki i sesam. ",
+    "titulo": "Lubina a la donostriarra con verduras estilo wok",
+    "descripcion": "Lubina a la donostriarra amb verdures estil wok\n",
     "alergias": ""
   },
   "segundo2": {
-    "titulo": " ⁠Secreto Iberico a la brasa con patatas a lo pobre y chimichurri*",
-    "descripcion": "Secret iberic a la brasa amb patates “a lo pobre “ i chimichurri*\n",
-    "alergias": "Sin Gluten"
+    "titulo": "Entrtecote con guarnicion de patatas fritas ( +3€)",
+    "descripcion": "Entrtecot amb guarnició de patates fregides ( +3€)",
+    "alergias": ""
   },
   "segundo3": {
-    "titulo": "Hamburguesa de ternera con cebolla caramelizada, quedo cheddar y patatas fritas",
-    "descripcion": "Hamburguesa de vedella amb ceba caramelitzada, formatge cheddar i patates fregides.",
+    "titulo": " Costillas de cerdo a baja temperatura con sus jugos a la BBQ y fritas de boniato. (+2€)  ",
+    "descripcion": "Costelles de porc a baixa temperatura amb els seus sucs a la BBQ i fregides de moniato. (+2€)",
     "alergias": ""
   },
   "segundo4": {
-    "titulo": " ⁠Cordero al horno con patata panadera y demi glace de sus jugos (+3€)",
-    "descripcion": "Xai al forn amb patata fornera i Demi glace del seus sucs ( +3€ )",
-    "alergias": ""
+    "titulo": "Secreto iberico con salsa de shitakes y guarnicion de pimientos del Padrón. ",
+    "descripcion": "Secret ibèric amb salsa de shitakes i guarnició de padróns.",
+    "alergias": "Sin gluten "
   },
   "segundo5": {
     "titulo": "",
@@ -68,9 +68,9 @@
     "alergias": ""
   },
   "postre2": {
-    "titulo": "Yogur griego con miel y nueces*",
-    "descripcion": "Iogurt grec amb mel i nous*\n",
-    "alergias": "Sin Gluten"
+    "titulo": "Brownie con helado de vainilla.",
+    "descripcion": "Brownie amp gelat de vainilla. \n",
+    "alergias": ""
   },
   "postre3": {
     "titulo": "Sorbete de frambuesa*",
